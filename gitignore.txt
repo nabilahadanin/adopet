@@ -1,0 +1,17 @@
+# Served static
+staticfiles/
+
+# Pyhton cache
+__pycache__/
+
+# Environment variables
+env/
+
+#ignore chromedriver
+chromedriver
+chromedriver.exe
+
+
+# Coverage
+.coverage
+
