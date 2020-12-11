@@ -1,0 +1,29 @@
+body{
+    background-color: #F7F8F3 !important;
+    font-family: Nunito !important;
+}
+
+#navbar-custom{
+    background-color: #002c3e !important;
+}
+
+.navbar-font{
+    font-size: 14px !important;
+    font-weight: bold !important;
+    color: #F7F8F3 !important;
+}
+
+.btn-login{
+    color : #002c3e !important;
+    border: 4px solid #002c3e !important;
+    box-sizing: border-box;
+    font-weight: 900 !important;
+    font-size: 18px !important;
+    position: absolute;
+    align-items: center;
+    align-self: center;
+    align-content: center;
+    text-align: center;
+    width: 40%;
+}
+
