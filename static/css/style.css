@@ -27,3 +27,57 @@ body{
     width: 40%;
 }
 
+.form-label{
+    margin-top: 5%;
+}
+
+.form-control{
+    background-color: #F7F8F3 !important;
+    border: 2px solid #002c3e !important;
+}
+
+.star{
+    color: #f7444e;
+}
+
+.btn-primary{
+    width: 45% !important;
+    background-color: #002c3e !important;
+    color: #F7F8F3 !important;
+}
+
+.btn-right{
+    margin-left: 9%;
+}
+
+.form-big{
+    height: 5% !important;
+}
+
+.btn-secondary{
+    width: 20% !important;
+    background-color: #f7444e !important;
+    color: #F7F8F3 !important;
+}
+
+.unggah{
+    margin-top: 10%;
+}
+
+.judul-form{
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    color: #f7444e;
+    margin-top: 5%;
+}
+
+.btn-kembali{
+    margin-left: 30px;
+    font-family: Nunito;
+    font-weight: 700 !important;
+    font-size: 18px !important;
+    align-items: center;
+    color: #002c3e !important;
+}
+
