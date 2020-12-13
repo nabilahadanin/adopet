@@ -1,7 +1,7 @@
 # Served static
 staticfiles/
 
-# Pyhton cache
+# Python cache
 __pycache__/
 
 # Environment variables
@@ -11,6 +11,8 @@ env/
 chromedriver
 chromedriver.exe
 
+# Python compiled files
+.pyc
 
 # Coverage
 .coverage
