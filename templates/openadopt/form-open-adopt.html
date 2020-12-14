@@ -7,49 +7,65 @@
 		<p class="judul-form">Form Open Adopt</p><br>
 	</div>
 </div>
-
+<form>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-7">
             <p class="form-label">Nama Hewan<span class="star">*</span> </p>
-            <input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">   
+            <input type="text" id="nama-hewan" class="form-control" required>
+            
             <p class="form-label">Jenis Hewan<span class="star">*</span> </p>
-            <input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">   
+            <input type="text" id="jenis-hewan" class="form-control" required>   
+            
             <p class="form-label">Jenis Kelamin Hewan<span class="star">*</span> </p>
-            <button type="button" class="btn btn-primary">Jantan</button>
-            <button type="button" class="btn btn-primary btn-right">Betina</button>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="jantan" required>
+                <label class="form-check-label" for="inlineRadio1">Jantan</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="gender" id="inlineRadio2" value="betina">
+                <label class="form-check-label" for="inlineRadio2">Betina</label>
+            </div>
+            
             <p class="form-label">Usia Hewan<span class="star">*</span> </p>
-            <input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">   
+            <input type="text" id="usia-hewan" class="form-control" required>   
+            
             <p class="form-label">Domisili Hewan<span class="star">*</span> </p>
-            <input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">   
+            <input type="text" id="dom-hewan" class="form-control" required>   
+            
             <p class="form-label">Keterangan</p>
-            <input type="password" id="inputPassword5" class="form-control form-big" aria-describedby="passwordHelpBlock">   
+            <input type="text" id="keterangan" class="form-control form-big">   
+            
             <p class="form-label">Kategori<span class="star">*</span> </p>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                <input class="form-check-input" type="radio" name="kategori" id="inlineRadio1" value="kucing" required>
                 <label class="form-check-label" for="inlineRadio1">Kucing</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="kategori" id="inlineRadio2" value="anjing">
                 <label class="form-check-label" for="inlineRadio2">Anjing</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="kategori" id="inlineRadio3" value="ikan">
                 <label class="form-check-label" for="inlineRadio3">Ikan</label>
             </div>
+            
             <p class="form-label">Kondisi Fisik Hewan<span class="star">*</span> </p>
-            <input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">  
+            <input type="text" id="kondisi-fisik" class="form-control form-big" required>  
+            
             <p class="form-label">Kondisi Psikis Hewan<span class="star">*</span> </p>
-            <input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">    
+            <input type="text" id="kondisi-psikis" class="form-control form-big" required>  
+            
             <p class="form-label">Mahar Adopsi</p>
-            <input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">
+            <input type="text" id="mahar" class="form-control">  
+            
             <p class="form-label">Foto Hewan<span class="star">*</span></p>
-            <input class="form-control" type="file" id="formFileMultiple" multiple>   
+            <input class="form-control" type="file" id="formFileMultiple" multiple required>   
         </div>
     </div>
     <div class="row justify-content-center unggah">
-        <button type="button" class="btn btn-secondary">Unggah</button>
+        <input type="submit" class="btn btn-secondary" value="Unggah" href="{% url 'user:berhasil_unggah' %}">
     </div>
 </div>
-
+</form>
 {% endblock content_block %}

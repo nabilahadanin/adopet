@@ -9,4 +9,6 @@ urlpatterns = [
     path('profil/', views.profil, name='profil'),
     path('buat-artikel/', views.buat_artikel, name='buat_artikel'),
     path('', views.beranda, name='beranda'),
+    path('berhasil-unggah/', views.berhasil_unggah, name='berhasil_unggah'),
+    path('berhasil-request/', views.berhasil_request, name='berhasil_request'),
 ]

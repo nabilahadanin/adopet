@@ -15,3 +15,9 @@ def buat_artikel(request):
 
 def beranda(request):
     return render(request, 'homepage/beranda.html')
+
+def berhasil_request(request):
+    return render(request, 'warning/berhasil-request.html')
+
+def berhasil_unggah(request):
+    return render(request, 'warning/berhasil-unggah.html')
