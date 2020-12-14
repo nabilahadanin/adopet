@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\ASUS\Documents\1KULIAH\_RPL\tk\adopet\env"
+VIRTUAL_ENV="C:\Users\ASUS\Documents\1KULIAH\_RPL\tk\benerin develop\adopet\env"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

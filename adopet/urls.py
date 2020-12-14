@@ -19,5 +19,6 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('homepage.urls')),
-    path('open-donasi/', include('opendonasi.urls')),
+    path('user/', include('user.urls')),
+    path('admin-adopet/', include('adminadopet.urls')),
 ]

@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Users\ASUS\Documents\1KULIAH\_RPL\tk\adopet\env
+set VIRTUAL_ENV=C:\Users\ASUS\Documents\1KULIAH\_RPL\tk\benerin develop\adopet\env
 
 if not defined PROMPT set PROMPT=$P$G
 

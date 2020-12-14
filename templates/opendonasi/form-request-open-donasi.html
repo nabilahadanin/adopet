@@ -1,7 +1,6 @@
-{% extends 'navbar.html' %}
-
+{% extends 'head.html' %}
 {% block content_block %}
-<a href="/" class="btn btn-kembali"> < Kembali</a>
+<a href="{% url 'user:beranda' %}" class="btn btn-kembali"> < Kembali</a>
 <div class="container">
 	<div class="row justify-content-md-center">
 		<p class="judul-form">Form Request Open Donasi</p><br>

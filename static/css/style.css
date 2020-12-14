@@ -62,6 +62,8 @@ body{
 
 .unggah{
     margin-top: 10%;
+    align-items: center !important;
+    text-align: center !important;
 }
 
 .judul-form{
@@ -81,3 +83,20 @@ body{
     color: #002c3e !important;
 }
 
+.jawaban{
+    font-weight: 700 !important;
+}
+
+.login{
+    margin-top: 6% !important;
+    align-items: center !important;
+    text-align: center !important;
+}
+
+.login-admin{
+    align-items: center !important;
+    text-align: center !important;
+    color: #f7444e !important;
+    font-size: 14px !important;
+    margin-top: 3% !important;
+}

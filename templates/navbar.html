@@ -29,29 +29,39 @@
     <title>{% block title %}AdoPet{% endblock title %}</title>
 </head>
 <body>
-    
     <nav class="navbar navbar-expand-lg navbar-light bg-light" id="navbar-custom">
-        <div class="container-fluid">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item navbutton-left">
           <a class="navbar-brand" href="/">
             <img src="/static/images/logo-navbar.png" alt="" width="130" height="50">
           </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <a class="nav-link navbar-font" href="#">Buat Artikel</a>
-                <a class="nav-link navbar-font" href="#">Buat Open Adopt</a>
-                <a class="nav-link navbar-font" href="#">Buat Open Donasi</a>
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success navbar-font" type="submit">Cari</button>
-                </form>
-                <a class="nav-link navbar-font" href="#">Profil</a>
-                <a class="nav-link navbar-font" href="#">Logout</a>
-            </div>
-          </div>
-        </div>
+        </li>
+      </ul>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item navbutton-left">
+          <a class="nav-link navbar-font" href="{% url 'user:buat_artikel' %}">Buat Artikel</a>
+        </li>
+        <li class="nav-item navbutton-left">
+          <a class="nav-link navbar-font" href="{% url 'user:form_open_adopt' %}">Buat Open Adopt</a>
+        </li>
+        <li class="nav-item navbutton-left">
+          <a class="nav-link navbar-font" href="{% url 'user:form_request_open_donasi' %}">Buat Open Donasi</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item navbutton-right">
+          <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success navbar-font" type="submit">Cari</button>
+        </form>
+        </li>
+        <li class="nav-item navbutton-right">
+          <a class="nav-link navbar-font" href="/user/profil/">Profil</a>
+        </li>
+        <li class="nav-item navbutton-right">
+          <a class="nav-link navbar-font" href="/">Logout</a>
+        </li>
+      </ul>
     </nav>
     {% block content_block %}{% endblock content_block %}
 </body>
