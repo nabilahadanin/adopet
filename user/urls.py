@@ -12,4 +12,5 @@ urlpatterns = [
     path('berhasil-unggah/', views.berhasil_unggah, name='berhasil_unggah'),
     path('berhasil-request/', views.berhasil_request, name='berhasil_request'),
     path('detail-artikel/', views.detail_artikel, name='detail_artikel'),
+    path('profil/buat-testimoni/', views.buat_testimoni, name='buat_testimoni'),
 ]

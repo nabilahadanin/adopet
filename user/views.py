@@ -24,3 +24,6 @@ def berhasil_request(request):
 
 def berhasil_unggah(request):
     return render(request, 'warning/berhasil-unggah.html')
+
+def buat_testimoni(request):
+    return render(request, 'profil/form-testimoni.html')

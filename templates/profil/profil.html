@@ -1,1 +1,39 @@
-INI HALAMAN PROFIL
+{% extends 'navbar.html' %}
+{% block content_block %}
+{% load static %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/profil.css' %}" type="text/CSS">
+</head>
+<a href="/user/" class="btn btn-kembali"> < Kembali</a>
+
+<div class="container">
+    <p class="judul-profil">Nabilah Adani Nurulizzah</p><br>
+    <div class="row justify-content-center">
+        <div class="col-7">
+            <div class="row" id="info-user">
+                <div class="column">
+                    <img id="img-profil" src="{% static 'images/kucing-1.jpg' %}" alt="" width="250px" height="250px">
+                </div>
+                <div class="column" id="text-profil">
+                    <p>First Name : Nabilah Adani</p>
+                    <p>Last Name : Nurulizzah</p>
+                    <p>Domisili : Depok</p>
+                    <a class="btn btn-primary" href="/user/profil/buat-testimoni/" role="button">Buat Testimoni</a>
+                </div>
+            </div>
+            <div class="list-testimoni">
+                <h2>List Testimoni</h2>
+                <dl>
+                    <dt>Zafira Binta</dt>
+                    <dd>Nilai : 5</dd>
+                    <dd>Pengiriman hewan dilakukan dengan baik.</dd>
+                    <dt>Muhammad Yoga</dt>
+                    <dd>Nilai : 1</dd>
+                    <dd>Hewan tidak dikirimkan dengan baik</dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content_block %}
