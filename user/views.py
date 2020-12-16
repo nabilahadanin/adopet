@@ -7,6 +7,12 @@ def form_request_open_donasi(request):
 def form_open_adopt(request):
     return render(request, 'openadopt/form-open-adopt.html')
 
+def detail_open_adopt(request):
+    return render(request, 'openadopt/detail-open-adopt.html')
+
+def form_pengadopsian(request):
+    return render(request, 'openadopt/form-pengadopsian.html')
+
 def profil(request):
     return render(request, 'profil/profil.html')
 
