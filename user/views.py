@@ -10,8 +10,11 @@ def form_open_adopt(request):
 def profil(request):
     return render(request, 'profil/profil.html')
 
-def buat_artikel(request):
-    return render(request, 'artikel/buat-artikel.html')
+def form_request_artikel(request):
+    return render(request, 'artikel/form-request-artikel.html')
+
+def detail_artikel(request):
+    return render(request, 'artikel/detailartikel.html')
 
 def beranda(request):
     return render(request, 'homepage/beranda.html')

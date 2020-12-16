@@ -1,0 +1,37 @@
+{% extends 'navbar.html' %}
+{% block content_block %}
+{% load static %}
+<head>
+	<link rel="stylesheet" href="{% static 'css/artikel.css' %}" type="text/CSS">
+</head>
+<a href="/admin-adopet/" class="btn btn-kembali"> < Kembali</a>
+<div class="container">
+	<div class="row justify-content-md-center">
+		<h1 class="head-artikel">Request Artikel</h1>
+	</div>
+</div>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-7">
+            <p class="form-label">Judul Artikel :</p>
+            <p class="jawaban">Awas, Ini 7 Makanan yang Ternyata Berbahaya bagi Hewan Peliharaan Anda</p>
+            <p class="form-label">Unggahan Foto :</p>
+            <img src="{% static 'images/kucing-1.jpg' %}" alt="">
+            <p class="form-label">Isi Artikel :</p>
+            <p class="jawaban">Melansir Bright Side, Rabu (19/8/2020), berikut adalah 7 makanan yang kita 
+                anggap biasa namun justru berpotensi membahayakan hewan peliharaan kita: 
+                Kacang, Tuna Kaleng, Selai Kacang, Adonan Roti Mentah, Susu, Daging Mentah, dan Jeruk. </p>
+            <p class="form-label">Tag Artikel :</p>    
+            <ul>
+                <li>makanan</li>
+                <li>hewan</li>
+            </ul>
+        </div>
+    </div>
+    <div class="row text-center unggah-button">
+        <div class="col-6"><button type="button" class="btn btn-secondary">Tolak</button></div>
+        <div class="col-6"><button type="button" class="btn btn-secondary">Unggah</button></div>        
+    </div>
+</div>
+
+{% endblock content_block %}

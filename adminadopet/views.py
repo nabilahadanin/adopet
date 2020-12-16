@@ -6,3 +6,6 @@ def beranda(request):
     
 def eval_open_donasi(request):
     return render(request, 'opendonasi/form-eval-open-donasi.html')
+
+def eval_artikel(request):
+    return render(request, 'artikel/form-eval-artikel.html')
