@@ -4,7 +4,7 @@
 <head>
 	<link rel="stylesheet" href="{% static 'css/artikel.css' %}" type="text/CSS">
 </head>
-<a href="/user/" class="btn btn-kembali"> < Kembali</a>
+<a href="{% url 'user:beranda' %}" class="btn btn-kembali"> < Kembali</a>
 <div class="container">
 	<div class="row justify-content-md-center">
 		<h1 class="head-artikel">Form Request Artikel</h1>
@@ -15,11 +15,11 @@
 		<div class="form-group">
 			<div class="form-group1">
 				<label for="judul-artikel">Judul Artikel :</label><br>
-				<textarea class="form-control" id="isi-artikel" cols="10" rows="1" placeholder="Tulis Judul Disini"></textarea>
+				<textarea class="form-control" id="isi-artikel" cols="10" rows="1" placeholder="Tulis Judul Disini" required></textarea>
 			</div>
 			<div class="form-group2">
 				<label for="isi-artikel">Isi Artikel :</label>
-				<textarea class="form-control" id="isi-artikel" cols="50" rows="6" placeholder="Tulis Artikelmu Disini"></textarea>
+				<textarea class="form-control" id="isi-artikel" cols="50" rows="6" placeholder="Tulis Artikelmu Disini" required></textarea>
 			</div>
 			<div class="form-group3">
 				<label for="img">Foto Artikel :</label>
@@ -46,7 +46,7 @@
 				</div>
 			</div>
 			<br>
-			<button type="submit" class="btn btn-primary">Request Artikel</button>
+			<input type="submit" class="btn btn-secondary" value="Request" href="{% url 'user:berhasil_request' %}">
 		</div>
 	</form>
 </div>

@@ -1,0 +1,50 @@
+{% extends 'navbar.html' %}
+{% block content_block %}
+{% load static %}
+<head>
+	<link rel="stylesheet" href="{% static 'css/openadopt.css' %}" type="text/CSS">
+</head>
+<a href="{% url 'user:beranda' %}" class="btn btn-kembali"> < Kembali</a>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="post-adopsi">
+            <h2 class="judul-post-adopsi">Donasi Hewan</h2>
+            <img src="{% static 'images/kucing-1.jpg' %}" alt="">
+            <div class="col-7">
+                <p class="form-label">Nama Hewan :</p>
+                <p class="jawaban">Gembil Gembul</p>
+                <p class="form-label">Jenis Hewan :</p>
+                <p class="jawaban">Domestic</p>
+                <p class="form-label">Jenis Kelamin Hewan :</p>
+                <p class="jawaban">Jantan</p>
+                <p class="form-label">Usia Hewan :</p>
+                <p class="jawaban">1 tahun</p>
+                <p class="form-label">Domisili Hewan :</p>
+                <p class="jawaban">Tebet, Jakarta</p>
+                <p class="form-label">Keterangan :</p>
+                <p class="jawaban">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
+                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation 
+                    ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit 
+                    in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat 
+                    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <p class="form-label">Kategori :</p>
+                <p class="jawaban">Kucing</p>
+                <p class="form-label">Kondisi Kesehatan Secara Detail :</p>
+                <p class="jawaban">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
+                    incididunt ut labore et dolore magna aliqua.</p>
+                <p class="form-label">Lokasi Perawatan/Pengobatan :</p>
+                <p class="jawaban">Obot Miaw, Tebet</p>
+                <p class="form-label">Biaya Perawatan/Pengobatan :</p>
+                <p class="jawaban">Rp1.000.000
+                <p class="form-label">Foto Hewan :</p>
+                <p class="jawaban">ini foto</p>
+                <p class="form-label">Donasi Terkumpul (isi Rp0 jika pertama kali unggah) :</p>
+                <input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center unggah">
+        <input type="submit" class="btn btn-secondary" value="Mau Berdonasi" href="{% url 'user:melakukan_donasi' %}">
+    </div>
+</div>
+{% endblock content_block %}

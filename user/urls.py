@@ -5,6 +5,8 @@ app_name = 'user'
 
 urlpatterns = [
     path('form-request-open-donasi/', views.form_request_open_donasi, name='form_request_open_donasi'),
+    path('detail-donasi/', views.detail_donasi, name='detail_donasi'),
+    path('melakukan-donasi/', views.melakukan_donasi, name='melakukan_donasi'),
     path('form-open-adopt/', views.form_open_adopt, name='form_open_adopt'),
     path('detail-open-adopt/', views.detail_open_adopt, name='detail_open_adopt'),
     path('detail-open-adopt/form-pengadopsian/', views.form_pengadopsian, name='form_pengadopsian'),

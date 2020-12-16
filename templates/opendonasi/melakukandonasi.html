@@ -1,0 +1,53 @@
+{% extends 'navbar.html' %}
+{% block content_block %}
+<a href="/" class="btn btn-kembali"> < Kembali</a>
+<div class="container">
+	<div class="row justify-content-md-center">
+		<p class="judul-form">Yuk Donasi!</p><br>
+	</div>
+</div>
+
+<div class="container">
+
+    <div class="row justify-content-center">
+        <div class="col-7">
+            <p class="form-label">Masukan Nominal Donasi</p>
+            <input type="number" class="form-control" placeholder="minimal Rp5000">
+            <p class="form-label">Pilih Metode Pembayaran</p>
+            <div>
+                <select id="metode" name="metode" class="form-control">
+                  <option value="gopay">GO-PAY</option>
+                  <option value="jenius">Jenius</option>
+                  <option value="linkaja">LinkAja</option>
+                  <option value="ovo">OVO</option>
+                  <option value="bca">BCA</option>
+                  <option value="bni">BNI</option>
+                  <option value="bri">BRI</option>
+                  <option value="mandiri">Mandiri</option>
+                  <option value="visa">Visa</option>
+                </select>
+            </div>  
+            <p class="form-label">Nama Lengkap</p>
+            <input type="text" class="form-control" id="namalengkap">
+            <p class="form-label">Nomor Ponsel atau Email</p>
+            <input type="text" class="form-control" id="email">
+            <p class="form-label">Sembunyikan nama saya (donasi anonim)</p>
+            <label class="switch">
+                <input type="checkbox">
+                <span class="slider"></span>
+            </label>
+            <p class="form-label">Tulis doa dan dukungan (opsional)</p>
+            <textarea rows="10" cols="30" class="form-control" placeholder="Beri doa, dan dukunganmu disini"></textarea>
+        </div>
+    </div>
+
+    <div class="row justify-content-center unggah">
+        <div class="col-6">
+            <button type="button" class="btn btn-secondary">Donasikan</button>
+        </div>        
+    </div>
+    <br><br>
+
+</div>
+
+{% endblock content_block %}

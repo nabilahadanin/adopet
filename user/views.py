@@ -4,6 +4,12 @@ from django.shortcuts import render
 def form_request_open_donasi(request):
     return render(request, 'opendonasi/form-request-open-donasi.html')
 
+def detail_donasi(request):
+    return render(request, 'opendonasi/detail-open-donasi.html')
+
+def melakukan_donasi(request):
+    return render(request, 'opendonasi/melakukandonasi.html')
+
 def form_open_adopt(request):
     return render(request, 'openadopt/form-open-adopt.html')
 
@@ -33,3 +39,6 @@ def berhasil_unggah(request):
 
 def buat_testimoni(request):
     return render(request, 'profil/form-testimoni.html')
+
+def forum(request):
+    return render(request, 'forum/forum.html')
