@@ -1,0 +1,90 @@
+{% extends "navbar.html" %}
+
+{% load static %}
+
+{% block title %}Adopet Search Page{% endblock %}
+
+<link rel="stylesheet" href="{% static 'css/searchpage.css' %}" type="text/CSS">
+
+{% block content_block %}
+<h1 class="text-center pt-4">Search Page</h1>
+<div class="container pb-4">
+    <div class="row">
+        <div class="col">
+            <h1 class="text-left pt-4">Filter Berdasarkan Tipe: </h1>
+            <div class="text-center mt-2 mb-2">
+                <button class="btn filter-btn active" id="filter-all">All</button>
+                <button class="btn filter-btn" id="filter-article">Artikel</button>
+                <button class="btn filter-btn" id="filter-profile">Profil</button>
+                <button class="btn filter-btn" id="filter-apost">Unggahan Adopsi</button>
+                <button class="btn filter-btn" id="filter-dpost">Unggahan Donasi</button>
+            </div>
+            <h1 class="text-left pt-4">Filter Berdasarkan Tags: </h1>
+            <div class="text-center mt-2 mb-2">
+                <button class="btn filter-btn active" id="filter-all">All</button>
+                <button class="btn filter-btn" id="filter-cats">#kucing</button>
+                <button class="btn filter-btn" id="filter-dogs">#anjing</button>
+                <button class="btn filter-btn" id="filter-rabbit">#kelinci</button>
+                <button class="btn filter-btn" id="filter-reptile">#reptil</button>
+                <button class="btn filter-btn" id="filter-fish">#ikan</button>
+                <button class="btn filter-btn" id="filter-bird">#burung</button>
+                <button class="btn filter-btn" id="filter-care">#perawatan</button>
+                <button class="btn filter-btn" id="filter-medic">#pengobatan</button>
+                <button class="btn filter-btn" id="filter-others">#lainnya</button>
+            </div>
+        </div>
+    </div>
+    <div class= "row">
+        <div class="col s4" style="width:20%;text-align: center;">
+            <div class="card">
+                <img src="/static/images/img_avatar.png" alt="Avatar" style="width:100%">
+                <div class="container">
+                    <h4><b>Yoga</b></h4> 
+                    <p>Si Admin</p> 
+                    <button>Lihat Profil</button>
+                </div>
+                <a>#ganteng</a>
+            </div>
+        </div>  
+        <div class="col s4" style="width:20%;text-align: center;">
+            <div class="card">
+                <img src="/static/images/adopsihc.jpeg" alt="adopsihc" style="width:100%">
+                <div class="container">
+                    <h4><b>Meng Meng</b></h4> 
+                    <p>Kucing kawaii ini siap diadopsi :3</p> 
+                    <button>Lihat Unggahan Adopsi</button>
+                    <a>#adopsi</a> 
+                    <a>#kucing</a> 
+                </div>
+            </div>
+        </div>
+        <div class="col s4" style="width:20%;text-align: center;">
+            <div class="card">
+                <img src="/static/images/artikelhc.jpeg" alt="artikelhc" style="width:100%">
+                <div class="container">
+                    <h4><b>7 Makanan yang Berbahaya bagi Anabul!</b></h4> 
+                    <p>Awas, berikut adalah 7 makanan yang Berbahaya bagi anabul kalian! Nomor 3 sering dijual dipasaran!</p> 
+                    <button>Lihat Artikel</button>
+                    <a>#artikel</a> 
+                    <a>#kucing</a> 
+                </div>
+            </div>
+        </div>
+        <div class="col s4" style="width:20%;text-align: center;">
+            <div class="card">
+                <img src="/static/images/donasihc.jpeg" alt="donasihc" style="width:100%">
+                <div class="container">
+                    <h4><b>Nyaw Nyawwww</b></h4> 
+                    <p>Si Nyaw adalah kucing yang sangat imut, namun lagi ngambek. Ayo donasi biar dia bisa kembali mengeong!</p> 
+                    <button>Lihat Unggahan Donasi</button>
+                    <a>#donasi</a> 
+                    <a>#kucing</a> 
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" id="all-pet">
+    </div>
+</div>
+{% endblock %}
+

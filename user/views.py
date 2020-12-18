@@ -42,3 +42,9 @@ def buat_testimoni(request):
 
 def forum(request):
     return render(request, 'forum/forum.html')
+    
+def chatpage(request):
+    return render(request, 'chatting/chatpage.html')
+
+def searchpage(request):
+    return render(request, 'searchpage/searchpage.html')

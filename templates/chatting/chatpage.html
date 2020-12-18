@@ -1,0 +1,239 @@
+{% extends 'navbar.html' %}
+
+{% block content_block %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/chatpage.css' %}" type="text/CSS">
+<script src="{% static 'js/chatpage.js' %}"></script>
+<head><script src='//production-assets.codepen.io/assets/editor/live/console_runner-079c09a0e3b9ff743e39ee2d5637b9216b3545af0de366d4b9aad9dc87e26bfd.js'></script><script src='//production-assets.codepen.io/assets/editor/live/events_runner-73716630c22bbc8cff4bd0f07b135f00a0bdc5d14629260c3ec49e5606f98fdd.js'></script><script src='//production-assets.codepen.io/assets/editor/live/css_live_reload_init-2c0dc5167d60a5af3ee189d570b1835129687ea2a61bee3513dee3a50c115a77.js'></script><meta charset='UTF-8'><meta name="robots" content="noindex"><link rel="shortcut icon" type="image/x-icon" href="//production-assets.codepen.io/assets/favicon/favicon-8ea04875e70c4b0bb41da869e81236e54394d63638a1ef12fa558a4a835f1164.ico" /><link rel="mask-icon" type="" href="//production-assets.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e76325261b7195c27224080bc099486ddd6dccb469b8e8e6.svg" color="#111" /><link rel="canonical" href="https://codepen.io/emilcarlsson/pen/ZOQZaV?limit=all&page=74&q=contact+" />
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700,300' rel='stylesheet' type='text/css'>
+
+<script src="https://use.typekit.net/hoy3lrg.js"></script>
+<script>try{Typekit.load({ async: true });}catch(e){}</script>
+<link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css'><link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css'>
+
+<div id="frame">
+	<div id="sidepanel">
+		<div id="profile">
+			<div class="wrap">
+				<img id="profile-img" src="http://emilcarlsson.se/assets/mikeross.png" class="online" alt="" />
+				<p>Yoga Ganteng</p>
+				<i class="fa fa-chevron-down expand-button" aria-hidden="true"></i>
+				<div id="status-options">
+					<ul>
+						<li id="status-online" class="active"><span class="status-circle"></span> <p>Online</p></li>
+						<li id="status-away"><span class="status-circle"></span> <p>Away</p></li>
+						<li id="status-busy"><span class="status-circle"></span> <p>Busy</p></li>
+						<li id="status-offline"><span class="status-circle"></span> <p>Offline</p></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div id="search">
+			<label for=""><i class="fa fa-search" aria-hidden="true"></i></label>
+			<input type="text" placeholder="Search contacts..." />
+		</div>
+		<div id="contacts">
+			<ul>
+				<li class="contact" onclick="openChat('Steven')">
+					<div class="wrap">
+						<span class="contact-status online"></span>
+						<img src="http://emilcarlsson.se/assets/louislitt.png" alt="" />
+						<div class="meta">
+							<p class="name">Steven</p>
+							<p class="preview">Hmm baiklah terima kasih call center Github.</p>
+						</div>
+					</div>
+				</li>
+				<li class="contact" onclick="openChat('Adoptee 123')">
+					<div class="wrap">
+						<span class="contact-status busy"></span>
+						<img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
+						<div class="meta">
+							<p class="name">Adoptee 123</p>
+							<p class="preview">Baiklah, Terima kasih.</p>
+						</div>
+					</div>
+				</li>
+				<li class="contact">
+					<div class="wrap">
+						<span class="contact-status away"></span>
+						<img src="http://emilcarlsson.se/assets/rachelzane.png" alt="" />
+						<div class="meta">
+							<p class="name">Zafira</p>
+							<p class="preview">Halo hard carry Front End Dev</p>
+						</div>
+					</div>
+				</li>
+				<li class="contact">
+					<div class="wrap">
+						<span class="contact-status online"></span>
+						<img src="http://emilcarlsson.se/assets/donnapaulsen.png" alt="" />
+						<div class="meta">
+							<p class="name">Nabh</p>
+							<p class="preview">Halo hardcarry backend</p>
+						</div>
+					</div>
+				</li>
+				<li class="contact">
+					<div class="wrap">
+						<span class="contact-status busy"></span>
+						<img src="http://emilcarlsson.se/assets/jessicapearson.png" alt="" />
+						<div class="meta">
+							<p class="name">Adopter 1</p>
+							<p class="preview">Halo, apa benar ini adopter 1?</p>
+						</div>
+					</div>
+				</li>
+				<li class="contact">
+					<div class="wrap">
+						<span class="contact-status"></span>
+						<img src="http://emilcarlsson.se/assets/haroldgunderson.png" alt="" />
+						<div class="meta">
+							<p class="name">Adopter 2</p>
+							<p class="preview">Halo, apa benar ini adopter 2?</p>
+						</div>
+					</div>
+				</li>
+				<li class="contact">
+					<div class="wrap">
+						<span class="contact-status"></span>
+						<img src="http://emilcarlsson.se/assets/danielhardman.png" alt="" />
+						<div class="meta">
+							<p class="name">Adopter 3</p>
+							<p class="preview">Halo, apa benar ini adopter 3?</p>
+						</div>
+					</div>
+				</li>
+				<li class="contact">
+					<div class="wrap">
+						<span class="contact-status busy"></span>
+						<img src="http://emilcarlsson.se/assets/katrinabennett.png" alt="" />
+						<div class="meta">
+							<p class="name">Adopter 4</p>
+							<p class="preview">Halo, apa benar ini adopter 4?</p>
+						</div>
+					</div>
+				</li>
+				<li class="contact">
+					<div class="wrap">
+						<span class="contact-status"></span>
+						<img src="http://emilcarlsson.se/assets/charlesforstman.png" alt="" />
+						<div class="meta">
+							<p class="name">Adopter 5</p>
+							<p class="preview">Halo, apa benar ini adopter 5?</p>
+						</div>
+					</div>
+				</li>
+				<li class="contact">
+					<div class="wrap">
+						<span class="contact-status"></span>
+						<img src="http://emilcarlsson.se/assets/jonathansidwell.png" alt="" />
+						<div class="meta">
+							<p class="name">Adopter 6</p>
+							<p class="preview">Halo, apa benar ini adopter 6?</p>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div id="bottom-bar">
+			<button id="searchppl"><i class="fa fa-user-plus fa-fw" aria-hidden="true"></i> <span>Cari Orang</span></button>
+			<button id="profile"><i class="fa fa-cog fa-fw" aria-hidden="true"></i> <span>profile</span></button>
+		</div>
+	</div>
+	<div class="content">
+		<div class="contact-profile hideAble" id="StevenU" style="display:none;">
+			<img src="http://emilcarlsson.se/assets/louislitt.png" alt="" />
+			<p>Steven</p>
+		</div>
+		<div class="contact-profile hideAble" id="Adoptee 123U" style="display:block;">
+			<img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
+			<p>Adoptee 123</p>
+		</div>
+		<div class="messages hideAble" id="Steven" style="display:none;">
+			<ul>
+				<li class="sent">
+					<img src="http://emilcarlsson.se/assets/louislitt.png" alt="" />
+					<p>Halo, apakah Call Center Github sedang buka?</p>
+				</li>
+				<li class="replies">
+					<img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
+					<p>Halo, iya benar sedang buka.</p>
+				</li>
+				<li class="replies">
+					<img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
+					<p>Saya Admin Call Center Github.</p>
+				</li>
+				<li class="sent">
+					<img src="http://emilcarlsson.se/assets/louislitt.png" alt="" />
+					<p>Mau nanya, cara make github gimana ya?</p>
+				</li>
+				<li class="replies">
+					<img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
+					<p>Jadi gini, anda udah baca about us belum?</p>
+				</li>
+				<li class="replies">
+					<img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
+					<p>Jika belum, mohon cek di github.com/about</p>
+				</li>
+				<li class="sent">
+					<img src="http://emilcarlsson.se/assets/louislitt.png" alt="" />
+					<p>Hmm baiklah terima kasih call center Github.</p>
+				</li>
+			</ul>
+		</div>
+		<div class="messages hideAble" id="Adoptee 123" style="display:block;">
+			<ul>
+				<li class="replies">
+					<img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
+					<p>Halo, apa benar ini Adoptee 123?.</p>
+				</li>
+				<li class="replies">
+					<img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
+					<p>Saya Mimin 1.</p>
+				</li>
+				<li class="sent">
+					<img src="http://emilcarlsson.se/assets/mikeross.png" alt="" />
+					<p>Ya, benar ini adoptee 123. Apa ada yang bisa saya bantu?</p>
+				</li>
+				<li class="replies">
+					<img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
+					<p>Jadi gini, anda suka membuat open adopsi apa saja?.</p>
+				</li>
+				<li class="replies">
+					<img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
+					<p>Asumsikan saya sedang mewawancarai anda.</p>
+				</li>
+				<li class="sent">
+					<img src="http://emilcarlsson.se/assets/mikeross.png" alt="" />
+					<p>Saya suka kucing karena mereka imut dan lucu. Bisa mengobati mereka yang mengadopsi</p>
+				</li>
+				<li class="replies">
+					<img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
+					<p>Baiklah, Terima kasih.</p>
+				</li>
+			</ul>
+		</div>
+		<div class="message-input">
+			<div class="wrap">
+			<input type="text" placeholder="Write your message..." />
+			<i class="fa fa-paperclip attachment" aria-hidden="true"></i>
+			<button class="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+			</div>
+		</div>
+	</div>
+</div>
+<script src='//production-assets.codepen.io/assets/common/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js'></script><script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
+
+{% endblock content_block %}
