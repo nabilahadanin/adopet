@@ -33,7 +33,7 @@ def list_hewan(request):
     return JsonResponse(hewan_list, safe=False)
 
 def list_foto(request):
-    foto_list = list(FormFoto.objects.values())
+    foto_list = list(FotoHewan.objects.values())
     for i in range(len(foto_list)):
         photo_list[i]['foto'] = settings.MEDIA_URL + foto_list[i]['foto']
     return JsonResponse(foto_list, safe=False)

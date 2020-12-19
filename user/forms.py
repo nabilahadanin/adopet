@@ -8,7 +8,7 @@ class FormAdopt(forms.ModelForm):
         fields = [
             'nama_hewan', 'jenis_hewan', 'jenis_kelamin_hewan', 'usia_hewan', 
             'domisili_hewan', 'keterangan', 'kategori', 'kondisi_fisik_hewan',
-            'kondisi_psikis_hewan', 'mahar_adopsi'
+            'kondisi_psikis_hewan', 'mahar_adopsi',
         ]
 
 class FormFoto(forms.Form):
