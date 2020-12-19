@@ -2,6 +2,23 @@
 
 {% block content_block %}
 
-INI TIMELINE UDAH LOGIN
+<h1 class="text-center pt-4">Adoption</h1>
+<div class="container pb-4">
+    <div class="row">
+        <div class="col">
+            <label for="searchpet">Search pet</label>
+            <input type="text" class="form-control" id="searchpet" placeholder="Search pet here">
+            <div class="text-center mt-3 mb-2">
+                <button class="btn orange-btn filter-btn" id="btn-all">All</button>
+                <button class="btn orange-btn filter-btn" id="btn-cats">Cats</button>
+                <button class="btn orange-btn filter-btn" id="btn-dogs">Dogs</button>
+                <button class="btn orange-btn filter-btn" id="btn-others">Others</button>
+            </div>
+        </div>
+    </div>
+    <div class="row" id="all-pet">
+    </div>
+</div>
+<script src='/static/js/beranda.js'></script>
 
 {% endblock content_block %}

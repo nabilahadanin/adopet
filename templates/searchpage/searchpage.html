@@ -70,18 +70,33 @@
                 </div>
             </div>
         </div>
+
+        {% for hewan in list_hewan %}
         <div class="col s4" style="width:20%;text-align: center;">
             <div class="card">
-                <img src="/static/images/donasihc.jpeg" alt="donasihc" style="width:100%">
+                {% for foto in list_foto %}
+                    {% if foto.hewan == hewan %}
+                        <div class="pet-photo mx-auto" style="
+                            background: url('{{ foto.foto.url }}') no-repeat center center;
+                            background-size: cover;
+                            -webkit-background-size: cover;
+                            -moz-background-size: cover;
+                            -o-background-size: cover;
+                            width:100%
+                        "></div>
+                        <!-- <img src="{{ photo.photo.url }}" alt="pet photo"><br> -->
+                    {% endif %}
+                {% endfor %}
                 <div class="container">
-                    <h4><b>Nyaw Nyawwww</b></h4> 
-                    <p>Si Nyaw adalah kucing yang sangat imut, namun lagi ngambek. Ayo donasi biar dia bisa kembali mengeong!</p> 
-                    <button>Lihat Unggahan Donasi</button>
-                    <a>#donasi</a> 
-                    <a>#kucing</a> 
+                    <h4><b>{{ hewan.nama_hewan }}</b></h4> 
+                    <p>{{ hewan.keterangan }}</p>
+                    <button>Lihat Unggahan Donasi</button> 
+                    {{ hewan.kategori }}
                 </div>
             </div>
         </div>
+        {% endfor %}
+                
     </div>
     <div class="row" id="all-pet">
     </div>
