@@ -1,0 +1,78 @@
+{% extends 'navbar.html' %}
+{% block content_block %}
+{% load static %}
+<head>
+	<link rel="stylesheet" href="{% static 'css/openadopt.css' %}" type="text/CSS">
+</head>
+<a href="{% url 'user:beranda' %}" class="btn btn-kembali"> < Kembali</a>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="post-adopsi">
+            <h2 class="judul-post-adopsi">List Request Pengadopsian</h2>
+            {% for i in database %}
+            <div class="col-7">
+                <p class="form-label">Nama Lengkap : {{i.nama_pengadopsi}} </p>
+                <p class="form-label">Nomor HP : {{i.nomor_hp}} </p>
+                <p class="form-label">Alamat Email: {{i.email_pengadopsi}} </p>
+                <p class="form-label">Alamat Lengkap: {{i.alamat_pengadopsi}} </p>
+            </div>
+            <div class="row justify-content-center unggah">
+                <div class="col-6"><button type="button" class="btn btn-secondary">Tolak</button></div>
+                <div class="col-6"><button type="button" class="btn btn-secondary">Terima</button></div>        
+            </div>
+            {% endfor %}
+        </div>
+	</div>
+</div>
+
+<div>
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <h1 class="judul-form">Forum Q&A</h1><br>
+        </div>
+    </div>
+
+<div class="container">
+
+    <div class="row justify-content-center">
+        <div class="col-md-7">
+            <div class="w3-card-4" style="width:70%">
+                <header class="w3-container w3-light-grey">
+                  <h3>Zoe, si kucing liar</h3>
+                </header>
+                <div class="w3-container">
+                  <p>3 more replies</p>
+                  <hr>
+                  <img src="/static/images/kucing.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+                  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aperiam accusamus impedit ipsum velit </p><br>
+                </div>
+                <button class="w3-button w3-block w3-dark-grey">+ See More</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row justify-content-center">
+        <div class="col-md-7">
+            <div class="w3-card-4" style="width:70%">
+                <header class="w3-container w3-light-grey">
+                  <h3>Kasian banget :(</h3>
+                </header>
+                <div class="w3-container">
+                  <p>7 more replies</p>
+                  <hr>
+                  <img src="/static/images/kucing.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+                  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aperiam accusamus impedit ipsum velit </p><br>
+                </div>
+                <button class="w3-button w3-block w3-dark-grey">+ See More</button>
+              </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center kembali">
+        <div class="col-5">
+            <button type="button" class="btn btn-secondary">Kembali</button>
+        </div>        
+    </div>
+    <br><br>
+</div>
+{% endblock content_block %}

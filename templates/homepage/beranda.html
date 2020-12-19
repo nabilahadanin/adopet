@@ -17,8 +17,26 @@
         </div>
     </div>
     <div class="row" id="all-pet">
+        {% if database %}
+		{% for i in database %}
+		<div class="card border-secondary my-3">
+			<div class="card-body">
+				<h4 class="card-title"><strong>{{i.nama_hewan}}</strong></h4>
+				<p>{{i.jenis_hewan}} @ {{i.domisili_hewan}}</p>
+				<p class="card-text" style="overflow: hidden">
+				{{i.keterangan}}
+				</p>
+				<a class="btn btn-primary" onclick="location.href='/user/detail-open-adopt/{{i.id}}'">Details</a>
+			</div>
+        </div>
+		{% endfor %}
+        {% else %}
+		<div class="container my-5 text-center">
+			Sorry, there are no current posts.<br><strong>Check back soon!</strong>
+		</div>
+		{% endif %}
+
     </div>
 </div>
-<script src='/static/js/beranda.js'></script>
 
 {% endblock content_block %}

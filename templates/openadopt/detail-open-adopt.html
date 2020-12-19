@@ -9,36 +9,22 @@
     <div class="row justify-content-center">
         <div class="post-adopsi">
             <h2 class="judul-post-adopsi">Pengadopsian Hewan</h2>
-            <img src="{% static 'images/kucing-1.jpg' %}" alt="">
             <div class="col-7">
-                <p class="form-label">Nama Hewan :</p>
-                <p class="jawaban">Alexander Xia</p>
-                <p class="form-label">Jenis Hewan :</p>
-                <p class="jawaban">Kucing Persia</p>
-                <p class="form-label">Jenis Kelamin Hewan :</p>
-                <p class="jawaban">Jantan</p>
-                <p class="form-label">Usia Hewan :</p>
-                <p class="jawaban">1 tahun</p>
-                <p class="form-label">Domisili Hewan :</p>
-                <p class="jawaban">Tebet, Jakarta</p>
-                <p class="form-label">Keterangan :</p>
-                <p class="jawaban">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
-                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation 
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit 
-                    in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat 
-                    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                <p class="form-label">Kategori :</p>
-                <p class="jawaban">Kucing</p>
-                <p class="form-label">Kondisi Fisik Hewan :</p>
-                <p class="jawaban">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
-                    incididunt ut labore et dolore magna aliqua.</p>
-                <p class="form-label">Kondisi Psikis Hewan :</p>
-                <p class="jawaban">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
-                    incididunt ut labore et dolore magna aliqua.</p>
-                <p class="form-label">Mahar Adopsi :</p>
-                <p class="jawaban">Rp100.000</p>
+                <p class="form-label">Nama Hewan : {{hewan.nama_hewan}} </p>
+                <p class="form-label">Jenis Hewan : {{hewan.jenis_hewan}} </p>
+                <p class="form-label">Jenis Kelamin Hewan : {{hewan.jenis_kelamin_hewan}} </p>
+                <p class="form-label">Usia Hewan : {{hewan.usia_hewan}} </p>
+                <p class="form-label">Domisili Hewan : {{hewan.domisili_hewan}} </p>
+                <p class="form-label">Keterangan : {{hewan.keterangan}} </p>
+                <p class="form-label">Kategori : {{hewan.kategori}} </p>
+                <p class="form-label">Kondisi Fisik Hewan : {{hewan.kondisi_fisik_hewan}} </p>
+                <p class="form-label">Kondisi Psikis Hewan : {{hewan.kondisi_psikis_hewan}} </p>
+                <p class="form-label">Mahar Adopsi : {{hewan.mahar_adopsi}} </p>
             </div>
-            <a class="btn btn-primary btn-lg btn-block" href="/user/detail-open-adopt/form-pengadopsian/" role="button">Adopsi Hewan</a>
+            <a class="btn btn-primary btn-lg btn-block" href="/user/detail-open-adopt/{{hewan.id}}/form-pengadopsian/" role="button">Adopsi Hewan</a>
+        </div>
+        <div class="row justify-content-center unggah">
+            <div class="col-6"><button type="button" class="btn btn-secondary" href="/user/detail-open-adopt/{{hewan.id}}/detail-pengadopsian/">List Adopsi</button></div>
         </div>
 	</div>
 </div>

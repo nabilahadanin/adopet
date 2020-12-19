@@ -36,3 +36,11 @@ class Hewan(models.Model):
 class FotoHewan(models.Model):
     foto = models.ImageField(upload_to='static/images/')
     hewan = models.ForeignKey(Hewan, on_delete=models.CASCADE)
+
+class RequestAdopsi(models.Model):
+    id_hewan = models.CharField(max_length = 50)
+    nama_hewan = models.CharField(max_length = 50)
+    nama_pengadopsi = models.CharField(max_length = 50)
+    nomor_hp = models.CharField(max_length = 14)
+    email_pengadopsi = models.CharField(max_length = 50)
+    alamat_pengadopsi = models.CharField(max_length = 200)
