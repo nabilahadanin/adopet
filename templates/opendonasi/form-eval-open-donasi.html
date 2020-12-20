@@ -3,7 +3,7 @@
 <a href="{% url 'adminadopet:beranda' %}" class="btn btn-kembali"> < Kembali</a>
 <div class="container">
 	<div class="row justify-content-md-center">
-		<p class="judul-form">Request Open Donasi #12</p><br>
+		<p class="judul-form">Request Open Donasi #{{donasi.id}}</p><br>
 	</div>
 </div>
 
@@ -31,14 +31,20 @@
             <p class="form-label">Lokasi Perawatan/Pengobatan :</p>
             <p class="jawaban">{{donasi.lokasi_perawatan}}</p>
             <p class="form-label">Biaya Perawatan/Pengobatan :</p>
-            <p class="jawaban">{{donasi.biaya_perawatan}}</p>
-            <p class="form-label">Donasi Terkumpul (isi Rp0 jika pertama kali unggah) :</p>
-            <input type="text" id="inputPassword5" class="form-control">
+            <p class="jawaban">{{donasi.biaya_perawatan}}</p>  
         </div>
     </div>
     <div class="row justify-content-center unggah">
-        <div class="col-6"><button type="button" class="btn btn-secondary">Tolak</button></div>
-        <div class="col-6"><a type="button" href="{% url 'adminadopet:berhasil_unggah' %}" class="btn btn-secondary">Unggah</a></div>        
+        <form method ="POST" action="{% url 'adminadopet:delete_open_donasi' donasi.id %}">{% csrf_token %}
+            <div class="col-6">
+                <button type="submit" class="Delete">Tolak</button>
+            </div>     
+        </form>
+        <form method ="POST" action="{% url 'adminadopet:eval_open_donasi' donasi.id %}">{% csrf_token %}
+            <div class="col-6">
+                <button type="submit" class="Unggah">Unggah</button>
+            </div>     
+        </form>  
     </div>
 </div>
 

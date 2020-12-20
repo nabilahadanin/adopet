@@ -17,18 +17,45 @@
     </div>
     <div class="row" id="all-pet">
         {% if database %}
-		{% for i in database %}
-		<div class="card border-secondary my-3">
-			<div class="card-body">
-				<h4 class="card-title"><strong>{{i.nama_hewan}}</strong></h4>
-				<p>{{i.lokasi_perawatan}} @ {{i.biaya_perawatan}}</p>
-				<p class="card-text" style="overflow: hidden">
-				{{i.keterangan}}
-				</p>
-				<a class="btn btn-primary" onclick="location.href='/admin-adopet/eval-open-donasi/{{i.id}}'">Details</a>
-			</div>
-        </div>
-		{% endfor %}
+            {% for i in database %}
+            {% if i.verifikasi == False %}
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 card-square">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="card-judul">
+                            <h5 class="card-title">{{i.nama_hewan}}</h5>
+                        </div>
+                        <div class="card-isi">
+                            <p class="card-text">{{i.lokasi_perawatan}} - {{i.biaya_perawatan}}</p>
+                            <p class="card-keterangan">{{i.keterangan}}</p>									 				
+                        </div class="card-bottom">
+                        <p class="card-kategori">#{{i.kategori}}</p>
+                        <a type="button" onclick="location.href='/admin-adopet/eval-open-donasi/{{i.id}}'" target="_blank" class="btn btn-detail">Lihat Detail</a><br>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+        {% endif %}
+        {% if post_artikel %}
+            {% for k in post_artikel %}
+            {% if k.verifikasi_artikel == False %}
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 card-square">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="card-judul">
+                            <h5 class="card-title">{{k.judul_artikel}}</h5>
+                        </div>
+                        <div class="card-isi">
+                            <p class="card-keterangan">{{k.isi_artikel}}</p>									 				
+                        </div class="card-bottom">
+                            <p class="card-kategori">#{{k.tag_artikel}}</p>
+                            <a type="button" onclick="location.href='/admin-adopet/eval-artikel/{{k.id}}'" target="_blank" class="btn btn-detail">Lihat Detail</a><br>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
         {% else %}
 		<div class="container my-5 text-center">
 			Sorry, there are no current posts.<br><strong>Check back soon!</strong>
@@ -36,6 +63,4 @@
 		{% endif %}
 
     </div>
-</div>
-
 {% endblock content_block %}

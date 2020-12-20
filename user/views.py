@@ -4,8 +4,9 @@ from django.http import JsonResponse
 from django.conf import settings
 import copy
 
-from .forms import FormAdopt, FormFoto, FormRequestAdopsi, FormDonasi
-from .models import Hewan, FotoHewan, RequestAdopsi, Donasi
+from .forms import FormAdopt, FormFoto, FormRequestAdopsi, FormDonasi, FormRequestArtikel, FormTestimoni
+from .models import Hewan, FotoHewan, RequestAdopsi, Donasi, Artikel, Testimoni
+from adminadopet.models import PostDonasi
 
 response = {}
 def form_open_adopt(request):
@@ -50,11 +51,15 @@ def detail_open_adopt(request, id):
 
 def beranda(request):
     database = Hewan.objects.all().values()
+    donasi = Donasi.objects.all().values()
+    artikel = Artikel.objects.all().values()
     context = {
-        'database' : database
+        'database' : database, 
+        'donasi' : donasi,
+        'artikel' : artikel
     }
     return render(request, 'homepage/beranda.html', context)
-
+    
 def list_hewan(request):
     hewan_list = list(Hewan.objects.values())
     return JsonResponse(hewan_list, safe=False)
@@ -71,7 +76,7 @@ def form_pengadopsian(request, id):
     if request.method == 'POST':
         database = Hewan.objects.get(id = id)
         response['id_hewan'] = id
-        response['nama_hewan'] = hewan.nama_hewan
+        response['nama_hewan'] = database.nama_hewan
         response['nama_pengadopsi'] = request.POST['nama_pengadopsi']
         response['nomor_hp'] = request.POST['nomor_hp']
         response['email_pengadopsi'] = request.POST['email_pengadopsi']
@@ -87,7 +92,7 @@ def form_pengadopsian(request, id):
         data.save()
         Form = FormRequestAdopsi() 
         context = {
-            'form' : form 
+            'form' : form,
             'pengadopsian' : pengadopsian
         }
         return render(request, 'openadopt/detail-pengadopsian.html', context)
@@ -142,20 +147,51 @@ def form_request_open_donasi(request):
         }
         return render(request, 'opendonasi/form-request-open-donasi.html', context)
 
-def detail_donasi(request):
-    return render(request, 'opendonasi/detail-open-donasi.html')
+def detail_donasi(request, id):
+    donasi = Donasi.objects.get(id = id)
+    args = {'donasi' : donasi}
+    return render(request, 'opendonasi/detail-open-donasi.html', args)
     
 def melakukan_donasi(request):
     return render(request, 'opendonasi/melakukandonasi.html')
 
 def profil(request):
-    return render(request, 'profil/profil.html')
+    testimoni = Testimoni.objects.all().values()
+    context = { 'testimoni' : testimoni }
+    return render(request, 'profil/profil.html', context)
 
 def form_request_artikel(request):
-    return render(request, 'artikel/form-request-artikel.html')
+    form = FormRequestArtikel(request.POST)
+    database = Artikel.objects.all()
+    if request.method == 'POST':
+        response['judul_artikel'] = request.POST['judul_artikel']
+        response['isi_artikel'] = request.POST['isi_artikel']
+        response['tag_artikel'] = request.POST['tag_artikel']
+        data = Artikel(judul_artikel = response['judul_artikel'], isi_artikel = response['isi_artikel'], tag_artikel = response['tag_artikel'])
+        data.save()
+        form = FormRequestArtikel()
+        database = Artikel.objects.all()
+        return render(request, 'warning/berhasil-request.html', {'database': database})
+    if request.method == 'DELETE':
+        if 'DeleteAll' in request.DELETE:
+            Artikel.objects.all().delete()
+            context = {
+                'form' : form,
+                'database' : database
+            }
+            return render(request, 'artikel/form-request-artkel.html', context)
+    else:
+        form = FormRequestArtikel()
+        context = {
+            'form' : form,
+            'database' : database
+        }
+        return render(request, 'artikel/form-request-artikel.html', context)
 
-def detail_artikel(request):
-    return render(request, 'artikel/detailartikel.html')
+def detail_artikel(request, id):
+    artikel = Artikel.objects.get(id = id)
+    args = {'artikel' : artikel}
+    return render(request, 'artikel/detailartikel.html', args)
 
 def berhasil_request(request):
     return render(request, 'warning/berhasil-request.html')
@@ -164,7 +200,31 @@ def berhasil_unggah(request):
     return render(request, 'warning/berhasil-unggah.html')
 
 def buat_testimoni(request):
-    return render(request, 'profil/form-testimoni.html')
+    form = FormTestimoni(request.POST)
+    database = Testimoni.objects.all()
+    if request.method == 'POST':
+        response['nilai_user'] = request.POST['nilai_user']
+        response['komentar_user'] = request.POST['komentar_user']
+        data = Testimoni(nilai_user = response['nilai_user'], komentar_user = response['komentar_user'])
+        data.save()
+        form = FormAdopt()
+        database = Testimoni.objects.all()
+        return render(request, 'warning/berhasil-unggah.html', {'database': database})
+    if request.method == 'DELETE':
+        if 'DeleteAll' in request.DELETE:
+            Testimoni.objects.all().delete()
+            context = {
+                'form' : form,
+                'database' : database
+            }
+            return render(request, 'profil/profil.html', context)
+    else:
+        form = FormTestimoni()
+        context = {
+            'form' : form,
+            'database' : database
+        }
+        return render(request, 'profil/form-testimoni.html', context)
 
 def forum(request):
     return render(request, 'forum/forum.html')

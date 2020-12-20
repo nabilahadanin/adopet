@@ -11,42 +11,45 @@
 	</div>
 </div>
 <div class="container">
-	<form>
+	<form method="POST"> {% csrf_token %}
 		<div class="form-group">
 			<div class="form-group1">
-				<label for="judul-artikel">Judul Artikel :</label><br>
-				<textarea class="form-control" id="isi-artikel" cols="10" rows="1" placeholder="Tulis Judul Disini" required></textarea>
+				<label for="judul_artikel">Judul Artikel :</label><br>
+				<textarea class="form-control" name="judul_artikel" cols="10" rows="1" placeholder="Tulis Judul Disini" required></textarea>
 			</div>
 			<div class="form-group2">
-				<label for="isi-artikel">Isi Artikel :</label>
-				<textarea class="form-control" id="isi-artikel" cols="50" rows="6" placeholder="Tulis Artikelmu Disini" required></textarea>
+				<label for="isi_artikel">Isi Artikel :</label>
+				<textarea class="form-control" name="isi_artikel" cols="50" rows="6" placeholder="Tulis Artikelmu Disini" required></textarea>
 			</div>
 			<div class="form-group3">
-				<label for="img">Foto Artikel :</label>
-				<input type="file" class="form-control-file" id="img" name="img" accept="image/*">
+				<label for="img_artikel">Foto Artikel :</label>
+				<input type="file" class="form-control-file" name="img_artikel" accept="image/*">
 			</div>
 			<br>
 			<label for="tag-artikel">Tag Artikel :</label>
-			<div class="row tag-artikel">
-				<div class="col">
-					<input type="checkbox" id="tag-anjing" name="tag-anjing" value="anjing">
-					<label for="tag-anjing"> anjing</label><br>
-				</div>
-				<div class="col">
-					<input type="checkbox" id="tag-kucing" name="tag-kucing" value="kucing">
-					<label for="tag-kucing"> kucing</label><br>
-				</div>
-				<div class="col">
-					<input type="checkbox" id="tag-artikel" name="tag-artikel" value="artikel">
-					<label for="tag-artikel"> artikel</label><br>
-				</div>
-				<div class="col">
-					<input type="checkbox" id="tag-makanan" name="tag-makanan" value="makanan">
-					<label for="tag-makanan"> makanan</label><br>
+			<div class="form-control">
+				<div class = "row">
+					<div class="col">
+						<input type="checkbox" id="tag-anjing" name="tag_artikel" value="Anjing">
+						<label for="tag-anjing"> anjing</label><br>
+					</div>
+					<div class="col">
+						<input type="checkbox" id="tag-kucing" name="tag_artikel" value="Kucing">
+						<label for="tag-kucing"> kucing</label><br>
+					</div>
+					<div class="col">
+						<input type="checkbox" id="tag-artikel" name="tag_artikel" value="Artikel">
+						<label for="tag-artikel"> artikel</label><br>
+					</div>
+					<div class="col">
+						<input type="checkbox" id="tag-makanan" name="tag_artikel" value="Makanan">
+						<label for="tag-makanan"> makanan</label><br>
+					</div>
 				</div>
 			</div>
-			<br>
-			<input type="submit" class="btn btn-secondary" value="Request" href="{% url 'user:berhasil_request' %}">
+			<div class="row justify-content-center unggah">
+				<button type="submit" class="btn btn-secondary">Request</button>
+			</div>
 		</div>
 	</form>
 </div>

@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm
-from .models import Hewan, RequestAdopsi, Donasi
+from .models import Hewan, RequestAdopsi, Donasi, Testimoni, Artikel
 
 class FormAdopt(forms.ModelForm):
     class Meta:
@@ -63,4 +63,26 @@ class FormDonasi(forms.ModelForm):
             'kondisi_kesehatan': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'kondisi_kesehatan'}),
             'lokasi_perawatan': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'lokasi_perawatan'}), 
             'biaya_perawatan': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'biaya_perawatan'}),
+        }
+class FormTestimoni(forms.ModelForm):
+    class Meta:
+        model = Testimoni
+        fields = (
+            'nilai_user', 'komentar_user'
+        )
+        widgets = {
+            'nilai_user': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'nilai_user'}), 
+            'komentar_user': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'komentar_user'}), 
+        }
+
+class FormRequestArtikel(forms.ModelForm):
+    class Meta:
+        model = Artikel
+        fields = (
+            'judul_artikel', 'isi_artikel', 'tag_artikel'
+        )
+        widgets = {
+            'judul_artikel': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'judul artikel'}),
+            'isi_artikel': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'isi artikel'}),
+            'tag_artikel': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'tag artikel'}),
         }

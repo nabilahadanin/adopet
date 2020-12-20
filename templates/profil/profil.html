@@ -21,14 +21,15 @@
             </div>
             <div class="list-testimoni">
                 <h2>List Testimoni</h2>
+                {% if testimoni %}
+                {% for i in testimoni %}
                 <dl>
-                    <dt>Zafira Binta</dt>
-                    <dd>Nilai : 5</dd>
-                    <dd>Pengiriman hewan dilakukan dengan baik.</dd>
-                    <dt>Muhammad Yoga</dt>
-                    <dd>Nilai : 1</dd>
-                    <dd>Hewan tidak dikirimkan dengan baik</dd>
+                    <dt>Nama Pengirim</dt>
+                    <dd>Nilai : {{i.nilai_user}}</dd>
+                    <dd>{{i.komentar_user}}</dd>
                 </dl>
+                {% endfor %}
+                {% endif %}
             </div>
         </div>
     </div>

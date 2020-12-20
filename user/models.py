@@ -73,3 +73,27 @@ class Donasi(models.Model):
     kondisi_kesehatan = models.CharField(max_length = 500)
     lokasi_perawatan = models.CharField(max_length = 100)
     biaya_perawatan = models.CharField(max_length = 50, default = "")
+    verifikasi = models.BooleanField(default = False)
+
+class Testimoni(models.Model):
+    NILAI = [
+        ("1", "1"),
+        ("2", "2"),
+        ("3", "3"),
+        ("4", "4"),
+        ("5", "5"),
+    ]
+    nilai_user = models.CharField(max_length = 50, choices = NILAI)
+    komentar_user = models.CharField(max_length = 50)
+
+class Artikel(models.Model):
+    TAG = [
+        ("Anjing", "Anjing"),
+        ("Artikel", "Artikel"),
+        ("Kucing", "Kucing"),
+        ("Makanan", "Makanan")
+    ]
+    judul_artikel = models.CharField(max_length = 50)
+    isi_artikel = models.CharField(max_length = 500)
+    tag_artikel = models.CharField(max_length = 50)
+    verifikasi_artikel = models.BooleanField(default = False)

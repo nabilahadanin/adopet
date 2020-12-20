@@ -119,3 +119,78 @@ body{
     color: #f7444e !important;
     font-weight: 900 !important;
 }
+
+.btn-adopsi{
+    width: 25% !important;
+    background-color: #f7444e !important;
+    color: #F7F8F3 !important;
+}
+
+.card{
+    margin-right: 0px !important;
+    background-color: #F7F8F3 !important;
+    border-radius: 16px !important;
+    border-width: 2px !important;
+    border-color: #78BCC4 !important;
+    margin-bottom: 30px !important;
+}
+
+.card-square{
+    height: fit-content !important;
+}
+    
+.card-isi{
+    font-family: Nunito !important;
+    font-style: normal;
+    margin-top: 5px !important;
+    font-weight: 700 !important;
+    font-size: 15px !important;
+    color: #002C3E;
+}
+
+.card-judul{
+    padding-bottom: 0px;
+    block-size: 35px;
+    font-family: Nunito !important;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 30px;
+    color: #78BCC4;
+}
+
+.card-title{
+    font-weight: 700 !important;
+    font-size: 25px !important;
+    block-size: 40px !important;
+}
+
+.btn-detail{
+    color : #F7F8F3 !important;
+    background-color: #F7444E !important;
+    border: 0px !important;
+    box-sizing: border-box;
+    border-radius: 20px !important;
+    font-family: Nunito !important;
+    font-weight: 700 !important;
+    font-size: 12px !important;
+    position: absolute;
+    width: 85%;
+}
+
+.card-kategori{
+    color: #F7444E !important;
+    font-family: Nunito !important;
+    font-size: 15px;
+}
+
+.card-bottom{
+    margin-top: 5px !important;
+}
+
+.card-keterangan{
+    font-weight: 200 !important ;
+    max-block-size: 100px !important;
+    white-space: nowrap !important; 
+    overflow: hidden !important;
+    text-overflow: ellipsis !important; 
+}

@@ -8,18 +8,12 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="artikel-isi">
-			<p class="judul-unggahartikel">Awas, Ini 7 Makanan yang Ternyata Berbahaya bagi Hewan Peliharaan Anda</p>
+			<p class="judul-unggahartikel">{{artikel.judul_artikel}}</p>
 			<p class="nama-penulis">Ditulis oleh : Nabilah Adani</p>
-			<p class="tag-artikel">#hewan #makanan</p>
+			<p class="tag-artikel">{{artikel.tag_artikel}}</p>
 			<img src="{% static 'images/kucing-1.jpg' %}" alt="">
 			<br>
-            <p> Melansir Bright Side, Rabu (19/8/2020), berikut adalah 7 makanan yang kita 
-                anggap biasa namun justru berpotensi membahayakan hewan peliharaan kita: 
-				Kacang, Tuna Kaleng, Selai Kacang, Adonan Roti Mentah, Susu, Daging Mentah, dan Jeruk. 
-				Kacang berpotensi bagi hewan peliharaan termasuk anjing dan kucing. Jenis kacang-kacangan yang paling berbahaya adalah kacang kalengan lantaran mengandung bahan pengawet dan garam, yang berbahaya bagi hewan peliharaan. 
-				Misalnya, setengah cangkir kacang kalengan mengandung sekitar 400 hingga 500 miligram natrium. Tetapi toleransi natrium hewan peliharaan sangat rendah. 
-				Jika hewan peliharaan Anda menyukai kacang, pilihlah kacang hijau, lentil atau kacang kering. Rasa kacang yang diberikan tidak boleh terlalu asin atau berasal dari kaleng-kalengan. Selain itu, penting untuk diperhatikan bahwa kacang-kacangan harus diberikan kepada hewan peliharaan Anda dalam jumlah yang sangat sedikit.
-			</p>
+            <p> {{artikel.isi_artikel}} </p>
         </div>
 	</div>
 </div>
