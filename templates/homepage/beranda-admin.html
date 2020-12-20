@@ -2,8 +2,40 @@
 
 {% block content_block %}
 
-INI ISINYA LIST REQUEST ARTIKEL DAN DONASI
+<h1 class="text-center pt-4">Daftar Request</h1>
+<div class="container pb-4">
+    <div class="row">
+        <div class="col">
+            <label for="searchpet">Search Request</label>
+            <input type="text" class="form-control" id="searchpet" placeholder="Search request here">
+            <div class="text-center mt-3 mb-2">
+                <button class="btn orange-btn filter-btn" id="btn-all">All</button>
+                <button class="btn orange-btn filter-btn" id="btn-artikel">Artikel</button>
+                <button class="btn orange-btn filter-btn" id="btn-donasi">Donasi</button>
+            </div>
+        </div>
+    </div>
+    <div class="row" id="all-pet">
+        {% if database %}
+		{% for i in database %}
+		<div class="card border-secondary my-3">
+			<div class="card-body">
+				<h4 class="card-title"><strong>{{i.nama_hewan}}</strong></h4>
+				<p>{{i.lokasi_perawatan}} @ {{i.biaya_perawatan}}</p>
+				<p class="card-text" style="overflow: hidden">
+				{{i.keterangan}}
+				</p>
+				<a class="btn btn-primary" onclick="location.href='/admin-adopet/eval-open-donasi/{{i.id}}'">Details</a>
+			</div>
+        </div>
+		{% endfor %}
+        {% else %}
+		<div class="container my-5 text-center">
+			Sorry, there are no current posts.<br><strong>Check back soon!</strong>
+		</div>
+		{% endif %}
 
-<a type="button" class="btn btn-login" href="{% url 'adminadopet:eval_open_donasi' %}">contoh pos open donasi</a>
+    </div>
+</div>
 
 {% endblock content_block %}

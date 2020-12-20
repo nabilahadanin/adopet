@@ -4,8 +4,8 @@ from django.http import JsonResponse
 from django.conf import settings
 import copy
 
-from .forms import FormAdopt, FormFoto, FormRequestAdopsi
-from .models import Hewan, FotoHewan, RequestAdopsi
+from .forms import FormAdopt, FormFoto, FormRequestAdopsi, FormDonasi
+from .models import Hewan, FotoHewan, RequestAdopsi, Donasi
 
 response = {}
 def form_open_adopt(request):
@@ -25,11 +25,8 @@ def form_open_adopt(request):
         data = Hewan(nama_hewan = response['nama_hewan'], jenis_hewan = response['jenis_hewan'], jenis_kelamin_hewan = response['jenis_kelamin_hewan'], usia_hewan = response['usia_hewan'], domisili_hewan = response['domisili_hewan'], keterangan = response['keterangan'], kategori = response['kategori'], kondisi_fisik_hewan = response['kondisi_fisik_hewan'], kondisi_psikis_hewan = response['kondisi_psikis_hewan'], mahar_adopsi = response['mahar_adopsi'])
         data.save()
         form = FormAdopt()
-        context = {
-            'form' : form,
-            'database' : database
-        }
-        return redirect('/user/')
+        database = Hewan.objects.all()
+        return render(request, 'warning/berhasil-unggah.html', {'database': database})
     if request.method == 'DELETE':
         if 'DeleteAll' in request.DELETE:
             Hewan.objects.all().delete()
@@ -105,11 +102,43 @@ def detail_pengadopsian(request, id):
     return render(request, 'openadopt/detail-request-adopsi.html', context)
 
 def form_request_open_donasi(request):
-    return render(request, 'opendonasi/form-request-open-donasi.html')
+    form = FormDonasi(request.POST)
+    database = Donasi.objects.all()
+    if request.method == 'POST':
+        response['nama_hewan'] = request.POST['nama_hewan']
+        response['jenis_hewan'] = request.POST['jenis_hewan']
+        response['jenis_kelamin_hewan'] = request.POST['jenis_kelamin_hewan']
+        response['usia_hewan'] = request.POST['usia_hewan']
+        response['domisili_hewan'] = request.POST['domisili_hewan']
+        response['keterangan'] = request.POST['keterangan']
+        response['kategori'] = request.POST['kategori']
+        response['kondisi_kesehatan'] = request.POST['kondisi_kesehatan']
+        response['lokasi_perawatan'] = request.POST['lokasi_perawatan']
+        response['biaya_perawatan'] = request.POST['biaya_perawatan']
+        data = Donasi(nama_hewan = response['nama_hewan'], jenis_hewan = response['jenis_hewan'], jenis_kelamin_hewan = response['jenis_kelamin_hewan'], usia_hewan = response['usia_hewan'], domisili_hewan = response['domisili_hewan'], keterangan = response['keterangan'], kategori = response['kategori'], kondisi_kesehatan = response['kondisi_kesehatan'], lokasi_perawatan = response['lokasi_perawatan'], biaya_perawatan = response['biaya_perawatan'])
+        data.save()
+        form = FormDonasi()
+        database = Donasi.objects.all()
+        return render(request, 'warning/berhasil-request.html', {'database': database})
+    if request.method == 'DELETE':
+        if 'DeleteAll' in request.DELETE:
+            Donasi.objects.all().delete()
+            context = {
+                'form' : form,
+                'database' : database
+            }
+            return render(request, 'opendonasi/form-request-open-donasi.html', context)
+    else:
+        form = FormDonasi()
+        context = {
+            'form' : form,
+            'database' : database
+        }
+        return render(request, 'opendonasi/form-request-open-donasi.html', context)
 
 def detail_donasi(request):
     return render(request, 'opendonasi/detail-open-donasi.html')
-
+    
 def melakukan_donasi(request):
     return render(request, 'opendonasi/melakukandonasi.html')
 
