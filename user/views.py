@@ -69,8 +69,10 @@ def list_foto(request):
     return JsonResponse(foto_list, safe=False)
 
 def form_pengadopsian(request, id):
+    form = FormRequestAdopsi(request.POST)
+    pengadopsian = RequestAdopsi.objects.all()
     if request.method == 'POST':
-        hewan = Hewan.objects.get(id = id)
+        database = Hewan.objects.get(id = id)
         response['id_hewan'] = id
         response['nama_hewan'] = hewan.nama_hewan
         response['nama_pengadopsi'] = request.POST['nama_pengadopsi']
@@ -84,10 +86,14 @@ def form_pengadopsian(request, id):
             nomor_hp = response['nomor_hp'],
             email_pengadopsi = response['email_pengadopsi'],
             alamat_pengadopsi = response['alamat_pengadopsi'],
-        );
+        )
         data.save()
-        context = {'hewan' : hewan}
-        return detail_open_adopt(request, id)
+        Form = FormRequestAdopsi() 
+        context = {
+            'form' : form 
+            'pengadopsian' : pengadopsian
+        }
+        return render(request, 'openadopt/detail-pengadopsian.html', context)
     else:
         hewan = Hewan.objects.get(id = id)
         form = FormRequestAdopsi()
@@ -102,7 +108,7 @@ def detail_pengadopsian(request, id):
     context = {
         'database' : database
     }
-    return render(request, 'openadopt/detail-request-adopsi.html', context)
+    return render(request, 'openadopt/detail-pengadopsian.html', context)
 
 def form_request_open_donasi(request):
     return render(request, 'opendonasi/form-request-open-donasi.html')
