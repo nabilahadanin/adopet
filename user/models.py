@@ -44,3 +44,32 @@ class RequestAdopsi(models.Model):
     nomor_hp = models.CharField(max_length = 14)
     email_pengadopsi = models.CharField(max_length = 50)
     alamat_pengadopsi = models.CharField(max_length = 200)
+
+class Donasi(models.Model):
+    KATEGORI_HEWAN = [
+        ("Kucing", "Kucing"),
+        ("Anjing", "Anjing"),
+        ("Kelinci", "Kelinci"),
+        ("Burung", "Burung"),
+        ("Ikan", "Ikan"),
+        ("Hewan Pengerat", "Pengerat"),
+        ("Unggas", "Unggas"),
+        ("Reptil", "Reptil"),
+        ("Lainnya", "Lainnya")
+    ]
+
+    JENIS_KELAMIN_HEWAN = [
+        ("Jantan", "Jantan"),
+        ("Betina", "Betina")
+    ]
+
+    nama_hewan = models.CharField(max_length = 50)
+    jenis_hewan = models.CharField(max_length = 50)
+    jenis_kelamin_hewan = models.CharField(max_length = 50, choices = JENIS_KELAMIN_HEWAN)
+    usia_hewan = models.CharField(max_length = 50)
+    domisili_hewan = models.CharField(max_length = 50)
+    keterangan = models.CharField(max_length = 500, default = "")
+    kategori = models.CharField(max_length = 50, choices = KATEGORI_HEWAN)
+    kondisi_kesehatan = models.CharField(max_length = 500)
+    lokasi_perawatan = models.CharField(max_length = 100)
+    biaya_perawatan = models.CharField(max_length = 50, default = "")

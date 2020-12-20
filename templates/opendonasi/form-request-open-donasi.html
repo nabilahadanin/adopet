@@ -6,65 +6,63 @@
 		<p class="judul-form">Form Request Open Donasi</p><br>
 	</div>
 </div>
-<form>
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-7">
-            <p class="form-label">Nama Hewan<span class="star">*</span> </p>
-            <input type="text" id="nama-hewan" class="form-control" required>
-               
-            <p class="form-label">Jenis Hewan<span class="star">*</span> </p>
-            <input type="text" id="jenis-hewan" class="form-control" required>   
-            
-            <p class="form-label">Jenis Kelamin Hewan<span class="star">*</span></p>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="jantan" required>
-              <label class="form-check-label" for="inlineRadio1">Jantan</label>
+<form method="POST"> {% csrf_token %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-7">
+                <label for="id_nama_hewan" class="form-label">Nama Hewan<span class="star">*</span> </label>
+                <input type="text" id="id_nama_hewan" class="form-control" name="nama_hewan" required="">
+                
+                <label for="id_jenis_hewan" class="form-label">Jenis Hewan<span class="star">*</span> </label>
+                <input type="text" id="id_jenis_hewan" class="form-control" name="jenis_hewan" required="">   
+                
+                <div class="form-group">
+                    <label for="id_jenis_kelamin_hewan" class="form-label">Jenis Kelamin Hewan<span class="star">*</span> </label>
+                    <select class="form-control" name="jenis_kelamin_hewan" required="" id="id_jenis_kelamin_hewan">
+                        <option value="" selected="">Pilih Jenis Kelamin</option>
+                        <option value="Jantan">Jantan</option>
+                        <option value="Betina">Betina</option>
+                    </select>
+                </div>
+    
+                <label for="id_usia_hewan" class="form-label">Usia Hewan<span class="star">*</span> </label>
+                <input type="text" id="id_usia_hewan" class="form-control" name="usia_hewan" required="">   
+                
+                <label for="id_domisili_hewan" class="form-label">Domisili Hewan<span class="star">*</span> </label>
+                <input type="text" id="id_domisili_hewan" class="form-control" name="domisili_hewan" required="">   
+                
+                <label for="id_keterangan" class="form-label">Keterangan</label>
+                <input type="text" id="id_keterangan" class="form-control form-big" name="keterangan">   
+                
+                <div class="form-group">
+                    <label for="id_kategori" class="form-label">Kategori<span class="star">*</span> </label>
+                    <select class="form-control" name="kategori" required="" id="id_kategori">
+                        <option value="" selected="">Pilih Kategori</option>
+                        <option value="Kucing">Kucing</option>
+                        <option value="Anjing">Anjing</option>
+                        <option value="Kelinci">Kelinci</option>
+                        <option value="Burung">Burung</option>
+                        <option value="Ikan">Ikan</option>
+                        <option value="Pengerat">Hewan Pengerat</option>
+                        <option value="Unggas">Unggas</option>
+                        <option value="Reptil">Reptil</option>
+                        <option value="Lainnya">Lainnya</option>
+                    </select>
+                </div>
+                
+                <label for="id_kondisi_kesehatan" class="form-label">Detail Kondisi Kesehatan Hewan<span class="star">*</span> </label>
+                <input type="text" id="id_kondisi_kesehatan" class="form-control form-big" name="kondisi_kesehatan" required="">  
+                
+                <label for="id_lokasi_perawatan" class="form-label">Lokasi Perawatan/Pengobatan<span class="star">*</span> </label>
+                <input type="text" id="id_lokasi_perawatan" class="form-control form-big" name="lokasi_perawatan" required="">  
+                
+                <label for="id_biaya_perawatan" class="form-label">Biaya Perawatan/Pengobatan<span class="star">*</span> </label>
+                <input type="text" id="id_biaya_perawatan" class="form-control" name="biaya_perawatan" required="">  
             </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="gender" id="inlineRadio2" value="betina">
-              <label class="form-check-label" for="inlineRadio2">Betina</label>
-            </div>
-            
-            <p class="form-label">Usia Hewan<span class="star">*</span> </p>
-            <input type="text" id="usia-hewan" class="form-control" required>   
-            
-            <p class="form-label">Domisili Hewan<span class="star">*</span> </p>
-            <input type="text" id="dom-hewan" class="form-control" required>   
-            
-            <p class="form-label">Keterangan</p>
-            <input type="text" id="keterangan" class="form-control form-big">   
-            
-            <p class="form-label">Kategori<span class="star">*</span> </p>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="kategori" id="inlineRadio1" value="kucing" required>
-                <label class="form-check-label" for="inlineRadio1">Kucing</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="kategori" id="inlineRadio2" value="anjing">
-                <label class="form-check-label" for="inlineRadio2">Anjing</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="kategori" id="inlineRadio3" value="ikan">
-                <label class="form-check-label" for="inlineRadio3">Ikan</label>
-            </div>
-            
-            <p class="form-label">Kondisi Kesehatan Secara Detail<span class="star">*</span> </p>
-            <input type="text" id="kondisi-kesehatan" class="form-control form-big" required>  
-            
-            <p class="form-label">Lokasi Perawatan/Pengobatan<span class="star">*</span> </p>
-            <input type="text" id="lokasi-perawatan" class="form-control" required>    
-            
-            <p class="form-label">Biaya Perawatan/Pengobatan<span class="star">*</span></p>
-            <input type="text" id="biaya-perawatan" class="form-control" required>
-            
-            <p class="form-label">Foto Hewan<span class="star">*</span></p>
-            <input class="form-control" type="file" id="formFileMultiple" multiple required>   
+        </div>
+        <div class="row justify-content-center unggah">
+            <button type="submit" class="btn btn-secondary">Request</button>
         </div>
     </div>
-    <div class="row justify-content-center unggah">
-        <input type="submit" class="btn btn-secondary" value="Request" href="{% url 'user:berhasil_request' %}">
-    </div>
-</div>
-</form>
+    </form>
 {% endblock content_block %}

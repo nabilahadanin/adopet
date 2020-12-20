@@ -1,6 +1,6 @@
 from django import forms
-
-from .models import Hewan, RequestAdopsi
+from django.forms import ModelForm
+from .models import Hewan, RequestAdopsi, Donasi
 
 class FormAdopt(forms.ModelForm):
     class Meta:
@@ -42,4 +42,25 @@ class FormRequestAdopsi(forms.ModelForm):
             'nomor_hp': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'nomor_hp'}), 
             'email_pengadopsi': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'email_pengadopsi'}),
             'alamat_pengadopsi': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'alamat_pengadopsi'}), 
+        }
+
+class FormDonasi(forms.ModelForm):
+    class Meta:
+        model = Donasi
+        fields = (
+            'nama_hewan', 'jenis_hewan', 'jenis_kelamin_hewan', 'usia_hewan', 
+            'domisili_hewan', 'keterangan', 'kategori', 'kondisi_kesehatan',
+            'lokasi_perawatan', 'biaya_perawatan'
+        )
+        widgets = {
+            'nama_hewan': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'nama_hewan'}), 
+            'jenis_hewan': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'jenis_hewan'}), 
+            'jenis_kelamin_hewan': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'jenis_kelamin_hewan'}),
+            'usia_hewan': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'usia_hewan'}),
+            'domisili_hewan': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'domisili_hewan'}), 
+            'keterangan': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'keterangan'}), 
+            'kategori': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'kategori'}), 
+            'kondisi_kesehatan': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'kondisi_kesehatan'}),
+            'lokasi_perawatan': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'lokasi_perawatan'}), 
+            'biaya_perawatan': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'biaya_perawatan'}),
         }
