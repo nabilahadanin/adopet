@@ -15,7 +15,7 @@
             <input type="number" class="form-control" placeholder="minimal Rp5000">
             <p class="form-label">Pilih Metode Pembayaran</p>
             <div>
-                <select id="metode" name="metode" class="form-control">
+                <select id="metode" name="metode_donasi" class="form-control">
                   <option value="gopay">GO-PAY</option>
                   <option value="jenius">Jenius</option>
                   <option value="linkaja">LinkAja</option>
@@ -28,16 +28,16 @@
                 </select>
             </div>  
             <p class="form-label">Nama Lengkap</p>
-            <input type="text" class="form-control" id="namalengkap">
+            <input type="text" class="form-control" name="nama_pendonasi">
             <p class="form-label">Nomor Ponsel atau Email</p>
-            <input type="text" class="form-control" id="email">
+            <input type="text" class="form-control" name="hp_email">
             <p class="form-label">Sembunyikan nama saya (donasi anonim)</p>
             <label class="switch">
                 <input type="checkbox">
                 <span class="slider"></span>
             </label>
             <p class="form-label">Tulis doa dan dukungan (opsional)</p>
-            <textarea rows="10" cols="30" class="form-control" placeholder="Beri doa, dan dukunganmu disini"></textarea>
+            <textarea rows="10" cols="30" class="form-control" placeholder="Beri doa, dan dukunganmu disini" name="dukungan"></textarea>
         </div>
     </div>
 

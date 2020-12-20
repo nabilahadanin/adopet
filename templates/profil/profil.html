@@ -24,7 +24,7 @@
                 {% if testimoni %}
                 {% for i in testimoni %}
                 <dl>
-                    <dt>Nama Pengirim</dt>
+                    <dt>{{i.nama_user}}</dt>
                     <dd>Nilai : {{i.nilai_user}}</dd>
                     <dd>{{i.komentar_user}}</dd>
                 </dl>

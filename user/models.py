@@ -77,14 +77,16 @@ class Donasi(models.Model):
 
 class Testimoni(models.Model):
     NILAI = [
+        ("0", "0"),
         ("1", "1"),
         ("2", "2"),
         ("3", "3"),
         ("4", "4"),
         ("5", "5"),
     ]
+    nama_user = models.CharField(max_length = 50, default="admin")
     nilai_user = models.CharField(max_length = 50, choices = NILAI)
-    komentar_user = models.CharField(max_length = 50)
+    komentar_user = models.CharField(max_length = 400)
 
 class Artikel(models.Model):
     TAG = [
@@ -97,3 +99,26 @@ class Artikel(models.Model):
     isi_artikel = models.CharField(max_length = 500)
     tag_artikel = models.CharField(max_length = 50)
     verifikasi_artikel = models.BooleanField(default = False)
+
+class Pendonasian(models.Model):
+    METODE = [
+        ("gopay", "gopay"),
+        ("jenius", "jenius"),
+        ("linkaja", "linkaja"),
+        ("ovo", "ovo"),
+        ("bca", "bca"),
+        ("bni", "bni"),
+        ("bri", "bri"),
+        ("mandiri", "mandiri"),
+        ("visa", "visa")
+    ]
+    nominal_donasi = models.CharField(max_length = 50)
+    metode_donasi = models.CharField(max_length = 50, choices = METODE)
+    nama_pendonasi = models.CharField(max_length = 50)
+    hp_email = models.CharField(max_length = 50)
+    dukungan = models.CharField(max_length = 500)
+    anonim_donasi =  models.BooleanField(default = False)
+
+class Forum(models.Model):
+    judul_forum = models.CharField(max_length = 50)
+    isi_forum = models.CharField(max_length = 500)

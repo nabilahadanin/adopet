@@ -2,12 +2,14 @@
 {% block content_block %}
 {% load static %}
 <head>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="{% static 'css/openadopt.css' %}" type="text/CSS">
 </head>
 <a href="{% url 'user:beranda' %}" class="btn btn-kembali"> < Kembali</a>
 <div class="container">
 	<div class="row justify-content-md-center">
-		<p class="judul-form">Pengadopsian Hewan</p><br>
+		<p class="judul-post-adopsi">Pengadopsian Hewan</p><br>
 	</div>
 </div>
 <div class="container">
@@ -35,12 +37,16 @@
             <p class="jawaban">{{hewan.mahar_adopsi}}</p>
         </div>
     </div>
+
     <div class="row justify-content-center unggah">      
-        <div class="col-6"><button type="button" class="btn btn-adopsi" href="/user/detail-open-adopt/{{hewan.id}}/form-pengadopsian/">Adopsi Hewan</button></div>
-        <div class="col-6"><button type="button" class="btn btn-adopsi" href="/user/detail-open-adopt/{{hewan.id}}/detail-pengadopsian/">List Adopsi</button></div>        
+        <div class="col">
+            <a type="button" class="btn btn-adopsi" onclick="location.href='/user/detail-open-adopt/{{hewan.id}}/form-pengadopsian/'">Adopsi Hewan</a>  
+            <a type="button" class="btn btn-adopsi" onclick="location.href='/user/detail-open-adopt/{{hewan.id}}/detail-pengadopsian/'">List Adopsi</a>
+        </div>        
     </div>
 </div>
-
+<br><br>
+<hr style="border: 5px;">
 <div>
     <div class="container">
         <div class="row justify-content-md-center">
@@ -48,47 +54,30 @@
         </div>
     </div>
 
-<div class="container">
-
-    <div class="row justify-content-center">
-        <div class="col-md-7">
-            <div class="w3-card-4" style="width:70%">
-                <header class="w3-container w3-light-grey">
-                  <h3>Zoe, si kucing liar</h3>
-                </header>
-                <div class="w3-container">
-                  <p>3 more replies</p>
-                  <hr>
-                  <img src="/static/images/kucing.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
-                  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aperiam accusamus impedit ipsum velit </p><br>
+    <div class="container">
+        {% if forum %}
+            {% for i in forum %}
+            <div class="row justify-content-center">
+                <div class="col-md-7">
+                    <div class="w3-card-4" style="width:70%">
+                        <header class="w3-container w3-light-grey">
+                            <h3>{{i.judul_forum}}</h3>
+                        </header>
+                    <div class="w3-container">
+                        <p>{{i.isi_forum}}</p><br>
+                    </div>
+                    <button class="w3-button w3-block w3-dark-grey">Reply Forum</button>
                 </div>
-                <button class="w3-button w3-block w3-dark-grey">+ See More</button>
             </div>
-        </div>
+            {% endfor %}
+        {% else %}
+		<div class="container my-5 text-center">
+			Sorry, there are no current posts.<br><strong>Check back soon!</strong>
+		</div>
+        {% endif %}
     </div>
-    
-    <div class="row justify-content-center">
-        <div class="col-md-7">
-            <div class="w3-card-4" style="width:70%">
-                <header class="w3-container w3-light-grey">
-                  <h3>Kasian banget :(</h3>
-                </header>
-                <div class="w3-container">
-                  <p>7 more replies</p>
-                  <hr>
-                  <img src="/static/images/kucing.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
-                  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aperiam accusamus impedit ipsum velit </p><br>
-                </div>
-                <button class="w3-button w3-block w3-dark-grey">+ See More</button>
-              </div>
-        </div>
+    <div class="row justify-content-center unggah">
+        <a type= "button" class ="btn btn-adopsi" style="margin-bottom: 10vh;" onclick="location.href='/user/detail-open-adopt/{{hewan.id}}/buat-forum/'">Buat Forum</a>
     </div>
-
-    <div class="row justify-content-center kembali">
-        <div class="col-5">
-            <button type="button" class="btn btn-secondary">Kembali</button>
-        </div>        
-    </div>
-    <br><br>
 </div>
 {% endblock content_block %}

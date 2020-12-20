@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm
-from .models import Hewan, RequestAdopsi, Donasi, Testimoni, Artikel
+from .models import Hewan, RequestAdopsi, Donasi, Testimoni, Artikel, Pendonasian, Forum
 
 class FormAdopt(forms.ModelForm):
     class Meta:
@@ -68,9 +68,10 @@ class FormTestimoni(forms.ModelForm):
     class Meta:
         model = Testimoni
         fields = (
-            'nilai_user', 'komentar_user'
+            'nama_user', 'nilai_user', 'komentar_user'
         )
         widgets = {
+            'nama_user': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'komentar_user'}),
             'nilai_user': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'nilai_user'}), 
             'komentar_user': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'komentar_user'}), 
         }
@@ -85,4 +86,29 @@ class FormRequestArtikel(forms.ModelForm):
             'judul_artikel': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'judul artikel'}),
             'isi_artikel': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'isi artikel'}),
             'tag_artikel': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'tag artikel'}),
+        }
+
+class FormPendonasian(forms.ModelForm):
+    class Meta: 
+        model = Pendonasian
+        fields = (
+            'nominal_donasi', 'metode_donasi', 'nama_pendonasi', 'hp_email', 'dukungan'
+        )
+        widgets = {
+            'nominal_donasi': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'nominal donasi'}),
+            'metode_donasi': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'metode donasi'}),
+            'nama_pendonasi': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'nama pendonasi'}),
+            'hp_email': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'hp atau email'}),
+            'dukungan': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'dukungan'}),
+        }
+
+class FormForum(forms.ModelForm):
+    class Meta:
+        model = Forum
+        fields = (
+            'judul_forum', 'isi_forum'
+        )
+        widgets = {
+            'judul_forum' : forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'judul forum'}),
+            'isi_forum' : forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'isi forum'}),
         }

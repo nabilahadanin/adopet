@@ -1,0 +1,17 @@
+{% extends 'head.html' %}
+{% block content_block %}
+{% load static %}
+<a href="{% url 'user:beranda' %}" class="btn btn-kembali"> < Kembali</a>
+<div class="container">
+	<p class="form-forum">Form Pembuatan Forum</p>
+	<form method="POST"> {% csrf_token %}
+		<p class="form-label">Judul Forum :</p>
+        <input type="text" class="form-control" name="judul_forum" required>
+        <p class="form-label">Pertanyaan / Pernyataan :</p>
+        <input type="text" class="form-control" name="isi_forum" required>
+        <div class="row justify-content-center unggah">
+			<button type="submit" class="btn btn-secondary">Kirim</button>
+        </div>
+    </form>
+</div>
+{% endblock content_block %}

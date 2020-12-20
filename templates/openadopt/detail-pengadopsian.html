@@ -4,7 +4,7 @@
 <head>
 	<link rel="stylesheet" href="{% static 'css/openadopt.css' %}" type="text/CSS">
 </head>
-<a href="{% url 'user:detail_open_adopt' %}" class="btn btn-kembali"> < Kembali</a>
+<a href="{% url 'user:beranda' %}" class="btn btn-kembali"> < Kembali</a>
 <div class="container">
     <div class="row justify-content-center">
         <div class="post-adopsi">
@@ -17,8 +17,16 @@
                 <p class="form-label">Alamat Lengkap: {{i.alamat_pengadopsi}} </p>
             </div>
             <div class="row justify-content-center unggah">
-                <div class="col-6"><button type="button" class="btn btn-secondary">Tolak</button></div>
-                <div class="col-6"><button type="button" class="btn btn-secondary">Terima</button></div>        
+                <form method ="POST" action="{% url 'user:delete_request_adopsi' hewan.id i.id %}">{% csrf_token %}
+                    <div class="col-6">
+                        <button type="submit" class="Delete">Tolak</button>
+                    </div>     
+                </form>
+                <form method ="POST" action="{% url 'user:berhasil_adopsi' hewan.id i.id %}">{% csrf_token %}
+                    <div class="col-6">
+                        <button type="submit" class="Unggah">Unggah</button>
+                    </div>     
+                </form>  
             </div>
             {% endfor %}
         </div>

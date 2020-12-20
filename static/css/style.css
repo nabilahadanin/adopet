@@ -61,7 +61,7 @@ body{
 }
 
 .unggah{
-    margin-top: 10%;
+    margin-top: 6%;
     align-items: center !important;
     text-align: center !important;
 }
@@ -121,9 +121,11 @@ body{
 }
 
 .btn-adopsi{
-    width: 25% !important;
+    width: 14% !important;
     background-color: #f7444e !important;
     color: #F7F8F3 !important;
+    margin-left: 12vh;
+    margin-right: 12vh;
 }
 
 .card{

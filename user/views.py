@@ -4,8 +4,8 @@ from django.http import JsonResponse
 from django.conf import settings
 import copy
 
-from .forms import FormAdopt, FormFoto, FormRequestAdopsi, FormDonasi, FormRequestArtikel, FormTestimoni
-from .models import Hewan, FotoHewan, RequestAdopsi, Donasi, Artikel, Testimoni
+from .forms import FormAdopt, FormFoto, FormRequestAdopsi, FormDonasi, FormRequestArtikel, FormTestimoni, FormForum
+from .models import Hewan, FotoHewan, RequestAdopsi, Donasi, Artikel, Testimoni, Forum
 from adminadopet.models import PostDonasi
 
 response = {}
@@ -91,11 +91,7 @@ def form_pengadopsian(request, id):
         )
         data.save()
         Form = FormRequestAdopsi() 
-        context = {
-            'form' : form,
-            'pengadopsian' : pengadopsian
-        }
-        return render(request, 'openadopt/detail-pengadopsian.html', context)
+        return render(request, 'warning/berhasil-unggah.html', {'database': database})
     else:
         hewan = Hewan.objects.get(id = id)
         form = FormRequestAdopsi()
@@ -106,11 +102,23 @@ def form_pengadopsian(request, id):
         return render(request, 'openadopt/form-pengadopsian.html', context)
 
 def detail_pengadopsian(request, id):
-    database = RequestAdopsi.objects.all().values()
-    context = {
-        'database' : database
-    }
-    return render(request, 'openadopt/detail-pengadopsian.html', context)
+    hewan = Hewan.objects.get(id = id)
+    pengadopsian = RequestAdopsi.objects.all().values()
+    return render(request, 'openadopt/detail-pengadopsian.html', {'pengadopsian' : pengadopsian, 'hewan' : hewan})
+
+def delete_request_adopsi(request, id_hewan, id_adopsi):
+    adopsi = RequestAdopsi.objects.get(id = id_adopsi)
+    hewan = Hewan.objects.get(id = id_hewan)
+    adopsi.delete()
+    pengadopsian = RequestAdopsi.objects.all().values()
+    return render(request, 'openadopt/detail-pengadopsian.html', {'pengadopsian' : pengadopsian, 'hewan' : hewan})
+
+def berhasil_adopsi(request, id_hewan, id_adopsi):
+    adopsi = RequestAdopsi.objects.get(id = id_adopsi)
+    hewan = Hewan.objects.get(id = id_hewan)
+    adopsi.delete()
+    pengadopsian = RequestAdopsi.objects.all().values()
+    return render(request, 'openadopt/detail-pengadopsian.html', {'pengadopsian' : pengadopsian, 'hewan' : hewan})
 
 def form_request_open_donasi(request):
     form = FormDonasi(request.POST)
@@ -153,7 +161,8 @@ def detail_donasi(request, id):
     return render(request, 'opendonasi/detail-open-donasi.html', args)
     
 def melakukan_donasi(request):
-    return render(request, 'opendonasi/melakukandonasi.html')
+    
+    return render(request, 'opendonasi/.html')
 
 def profil(request):
     testimoni = Testimoni.objects.all().values()
@@ -203,9 +212,10 @@ def buat_testimoni(request):
     form = FormTestimoni(request.POST)
     database = Testimoni.objects.all()
     if request.method == 'POST':
+        response['nama_user'] = request.POST['nama_user']
         response['nilai_user'] = request.POST['nilai_user']
         response['komentar_user'] = request.POST['komentar_user']
-        data = Testimoni(nilai_user = response['nilai_user'], komentar_user = response['komentar_user'])
+        data = Testimoni(nama_user = response['nama_user'], nilai_user = response['nilai_user'], komentar_user = response['komentar_user'])
         data.save()
         form = FormAdopt()
         database = Testimoni.objects.all()
@@ -226,8 +236,33 @@ def buat_testimoni(request):
         }
         return render(request, 'profil/form-testimoni.html', context)
 
-def forum(request):
-    return render(request, 'forum/forum.html')
+def buat_forum(request, id):
+    form = FormForum(request.POST)
+    forum = Forum.objects.all()
+    hewan = Hewan.objects.get(id = id)
+    if request.method == 'POST':
+        response['judul_forum'] = request.POST['judul_forum']
+        response['isi_forum'] = request.POST['isi_forum']
+        data = Forum(judul_forum = response['judul_forum'], isi_forum = response['isi_forum'])
+        data.save()
+        form = FormForum()
+        forum = Forum.objects.all()
+        return render(request, 'openadopt/detail-open-adopt.html', {'forum': forum, 'hewan': hewan})
+    if request.method == 'DELETE':
+        if 'DeleteAll' in request.DELETE:
+            Forum.objects.all().delete()
+            context = {
+                'form' : form,
+                'forum' : forum
+            }
+            return render(request, 'profil/profil.html', context)
+    else:
+        form = FormForum()
+        context = {
+            'form' : form,
+            'forum' : forum,
+        }
+        return render(request, 'openadopt/buat-forum.html', context)
     
 def chatpage(request):
     return render(request, 'chatting/chatpage.html')
