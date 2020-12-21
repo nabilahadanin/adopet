@@ -102,15 +102,15 @@ class Artikel(models.Model):
 
 class Pendonasian(models.Model):
     METODE = [
-        ("gopay", "gopay"),
-        ("jenius", "jenius"),
-        ("linkaja", "linkaja"),
-        ("ovo", "ovo"),
-        ("bca", "bca"),
-        ("bni", "bni"),
-        ("bri", "bri"),
-        ("mandiri", "mandiri"),
-        ("visa", "visa")
+        ("gopay", "Gopay"),
+        ("jenius", "Jenius"),
+        ("linkaja", "Linkaja"),
+        ("ovo", "OVO"),
+        ("bca", "BCA"),
+        ("bni", "BNI"),
+        ("bri", "BRI"),
+        ("mandiri", "Mandiri"),
+        ("visa", "Visa")
     ]
     nominal_donasi = models.CharField(max_length = 50)
     metode_donasi = models.CharField(max_length = 50, choices = METODE)

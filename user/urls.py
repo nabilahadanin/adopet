@@ -6,7 +6,7 @@ app_name = 'user'
 urlpatterns = [
     path('form-request-open-donasi/', views.form_request_open_donasi, name='form_request_open_donasi'),
     path('detail-donasi/<id>/', views.detail_donasi, name='detail_donasi'),
-    path('melakukan-donasi/', views.melakukan_donasi, name='melakukan_donasi'),
+    path('melakukan-donasi/<id>/', views.melakukan_donasi, name='melakukan_donasi'),
     path('form-open-adopt/', views.form_open_adopt, name='form_open_adopt'),
     path('detail-open-adopt/<id>/', views.detail_open_adopt, name='detail_open_adopt'),
     path('detail-open-adopt/<id>/buat-forum/', views.buat_forum, name='buat_forum'),
@@ -24,4 +24,5 @@ urlpatterns = [
     path('chatpage/', views.chatpage, name='chatpage'),
     path('list_hewan/', views.list_hewan, name='list_hewan'),
     path('list_foto/', views.list_foto, name='list_foto'),
+    path('search/', views.search, name='search')
 ]

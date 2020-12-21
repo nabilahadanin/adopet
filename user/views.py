@@ -60,6 +60,18 @@ def beranda(request):
     }
     return render(request, 'homepage/beranda.html', context)
     
+def search(request):
+    searchkey = request.GET.get('search')
+    database = Hewan.objects.filter(nama_hewan__icontains = searchkey)
+    donasi = Donasi.objects.filter(nama_hewan__icontains = searchkey)
+    artikel = Artikel.objects.filter(judul_artikel__icontains = searchkey)
+    context = {
+        'database' : database, 
+        'donasi' : donasi,
+        'artikel' : artikel
+    }
+    return render(request, 'homepage/beranda.html', context)
+
 def list_hewan(request):
     hewan_list = list(Hewan.objects.values())
     return JsonResponse(hewan_list, safe=False)
@@ -263,6 +275,9 @@ def buat_forum(request, id):
             'forum' : forum,
         }
         return render(request, 'openadopt/buat-forum.html', context)
-    
+
+def melakukan_donasi(request):
+    return render(request, 'openadopsi/melakukandonasi.html')
+
 def chatpage(request):
     return render(request, 'chatting/chatpage.html')

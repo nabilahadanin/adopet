@@ -36,7 +36,7 @@
         </div>    
     </div>
     <div class="row justify-content-center unggah">
-        <a type="button" class="btn btn-adopsi" href="{% url 'user:melakukan_donasi' %}"> Mau Berdonasi </a>
+        <a type="button" class="btn btn-adopsi" style="margin-bottom: 10vh;" onclick="location.href='/user/melakukan-donasi/{{donasi.id}}'"> Mau Berdonasi </a>
     </div>
 </div>
 {% endblock content_block %}

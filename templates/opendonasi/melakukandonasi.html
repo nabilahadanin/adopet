@@ -8,44 +8,44 @@
 </div>
 
 <div class="container">
-
-    <div class="row justify-content-center">
-        <div class="col-7">
-            <p class="form-label">Masukan Nominal Donasi</p>
-            <input type="number" class="form-control" placeholder="minimal Rp5000">
-            <p class="form-label">Pilih Metode Pembayaran</p>
-            <div>
-                <select id="metode" name="metode_donasi" class="form-control">
-                  <option value="gopay">GO-PAY</option>
-                  <option value="jenius">Jenius</option>
-                  <option value="linkaja">LinkAja</option>
-                  <option value="ovo">OVO</option>
-                  <option value="bca">BCA</option>
-                  <option value="bni">BNI</option>
-                  <option value="bri">BRI</option>
-                  <option value="mandiri">Mandiri</option>
-                  <option value="visa">Visa</option>
-                </select>
-            </div>  
-            <p class="form-label">Nama Lengkap</p>
-            <input type="text" class="form-control" name="nama_pendonasi">
-            <p class="form-label">Nomor Ponsel atau Email</p>
-            <input type="text" class="form-control" name="hp_email">
-            <p class="form-label">Sembunyikan nama saya (donasi anonim)</p>
-            <label class="switch">
-                <input type="checkbox">
-                <span class="slider"></span>
-            </label>
-            <p class="form-label">Tulis doa dan dukungan (opsional)</p>
-            <textarea rows="10" cols="30" class="form-control" placeholder="Beri doa, dan dukunganmu disini" name="dukungan"></textarea>
+    <form action="{% url 'user:melakukan-donasi' %}" method="POST" >
+        <div class="row justify-content-center">
+            <div class="col-7">
+                <p class="form-label">Masukan Nominal Donasi</p>
+                <input type="number" class="form-control" name = "nominal_donasi" placeholder="minimal Rp5000">
+                <p class="form-label">Pilih Metode Pembayaran</p>
+                <div>
+                    <select id="metode" name="metode_donasi" class="form-control">
+                    <option value="gopay">GO-PAY</option>
+                    <option value="jenius">Jenius</option>
+                    <option value="linkaja">LinkAja</option>
+                    <option value="ovo">OVO</option>
+                    <option value="bca">BCA</option>
+                    <option value="bni">BNI</option>
+                    <option value="bri">BRI</option>
+                    <option value="mandiri">Mandiri</option>
+                    <option value="visa">Visa</option>
+                    </select>
+                </div>  
+                <p class="form-label">Nama Lengkap</p>
+                <input type="text" class="form-control" name="nama_pendonasi">
+                <p class="form-label">Nomor Ponsel atau Email</p>
+                <input type="text" class="form-control" name="hp_email">
+                <p class="form-label">Sembunyikan nama saya (donasi anonim)</p>
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider"></span>
+                </label>
+                <p class="form-label">Tulis doa dan dukungan (opsional)</p>
+                <textarea rows="10" cols="30" class="form-control" placeholder="Beri doa, dan dukunganmu disini" name="dukungan"></textarea>
+            </div>
         </div>
-    </div>
-
-    <div class="row justify-content-center unggah">
-        <div class="col-6">
-            <button type="button" class="btn btn-secondary">Donasikan</button>
-        </div>        
-    </div>
+        <div class="row justify-content-center unggah">
+            <div class="col-6">
+                <button type="button" class="btn btn-secondary">Donasikan</button>
+            </div>        
+        </div>
+    </form>
     <br><br>
 
 </div>

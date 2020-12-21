@@ -64,3 +64,13 @@ def delete_artikel(request, id):
 
 def berhasil_unggah(request):
     return render(request, 'warning/berhasil-unggah-donasi.html')
+
+def search(request):
+    searchkey = request.GET.get('search')
+    database = Donasi.objects.filter(nama_hewan__icontains = searchkey)
+    artikel = Artikel.objects.filter(judul_artikel__icontains = searchkey)
+    context = {
+        'database' : database,
+        'artikel' : artikel
+    }
+    return render(request, 'homepage/beranda-admin.html', context)

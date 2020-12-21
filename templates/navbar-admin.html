@@ -39,10 +39,10 @@
       </ul>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item navbutton-right">
-          <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <form action="{% url 'adminadopet:search' %}" method="GET">
+            <input class="form-control me-2" type="search" placeholder="Search" id="search" name="search" aria-label="Search">
             <button class="btn btn-outline-success navbar-font" type="submit">Cari</button>
-        </form>
+          </form>
         </li>
         <li class="nav-item navbutton-right">
           <a class="nav-link navbar-font" href="/">Logout</a>

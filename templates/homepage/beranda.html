@@ -1,22 +1,26 @@
 {% extends 'navbar.html' %}
 
 {% block content_block %}
+<!-- particlesjs -->
+<div id="particles-js"></div>
 
 <h1 class="text-center pt-4">Adoption</h1>
 <div class="container pb-4">
     <div class="row">
-        <div class="col">
-            <label for="searchpet">Search pet</label>
-            <input type="text" class="form-control" id="searchpet" placeholder="Search pet here">
-            <div class="text-center mt-3 mb-2">
-                <button class="btn orange-btn filter-btn" id="btn-all">All</button>
-                <button class="btn orange-btn filter-btn" id="btn-cats">Cats</button>
-                <button class="btn orange-btn filter-btn" id="btn-dogs">Dogs</button>
-                <button class="btn orange-btn filter-btn" id="btn-others">Others</button>
+        <form action="{% url 'user:search' %}" method="GET">
+            <div class="col">
+                <label for="searchpet">Search pet</label>
+                <input type="search" class="form-control" id="search" name="search" placeholder="Search pet here">
+                <div class="text-center mt-3 mb-2">
+                    <button class="btn orange-btn filter-btn" id="btn-all">All</button>
+                    <button class="btn orange-btn filter-btn" id="btn-cats">Cats</button>
+                    <button class="btn orange-btn filter-btn" id="btn-dogs">Dogs</button>
+                    <button class="btn orange-btn filter-btn" id="btn-others">Others</button>
+                </div>
+                <button class="button" type="submit">Search</button>
             </div>
-        </div>
+        </form>
     </div>
-
     <div class="container">
         <div class="row" id="all-pet">
         {% if database %}
