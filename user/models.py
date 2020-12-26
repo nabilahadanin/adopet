@@ -112,6 +112,8 @@ class Pendonasian(models.Model):
         ("mandiri", "Mandiri"),
         ("visa", "Visa")
     ]
+
+    id_donasi = models.CharField(max_length = 50, default = "")
     nominal_donasi = models.CharField(max_length = 50)
     metode_donasi = models.CharField(max_length = 50, choices = METODE)
     nama_pendonasi = models.CharField(max_length = 50)

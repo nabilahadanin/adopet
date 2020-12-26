@@ -92,7 +92,7 @@ class FormPendonasian(forms.ModelForm):
     class Meta: 
         model = Pendonasian
         fields = (
-            'nominal_donasi', 'metode_donasi', 'nama_pendonasi', 'hp_email', 'dukungan'
+            'id_donasi','nominal_donasi', 'metode_donasi', 'nama_pendonasi', 'hp_email', 'dukungan'
         )
         widgets = {
             'nominal_donasi': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'nominal donasi'}),

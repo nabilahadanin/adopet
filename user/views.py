@@ -4,8 +4,8 @@ from django.http import JsonResponse
 from django.conf import settings
 import copy
 
-from .forms import FormAdopt, FormFoto, FormRequestAdopsi, FormDonasi, FormRequestArtikel, FormTestimoni, FormForum
-from .models import Hewan, FotoHewan, RequestAdopsi, Donasi, Artikel, Testimoni, Forum
+from .forms import FormAdopt, FormFoto, FormRequestAdopsi, FormDonasi, FormRequestArtikel, FormTestimoni, FormForum, FormPendonasian
+from .models import Hewan, FotoHewan, RequestAdopsi, Donasi, Artikel, Testimoni, Forum, Pendonasian
 from adminadopet.models import PostDonasi
 
 response = {}
@@ -103,7 +103,7 @@ def form_pengadopsian(request, id):
         )
         data.save()
         Form = FormRequestAdopsi() 
-        return render(request, 'warning/berhasil-unggah.html', {'database': database})
+        return render(request, 'warning/berhasil-unggah.html', {'database': database, 'pengadopsian': pengadopsian})
     else:
         hewan = Hewan.objects.get(id = id)
         form = FormRequestAdopsi()
@@ -172,9 +172,55 @@ def detail_donasi(request, id):
     args = {'donasi' : donasi}
     return render(request, 'opendonasi/detail-open-donasi.html', args)
     
-def melakukan_donasi(request):
-    
-    return render(request, 'opendonasi/.html')
+def melakukan_donasi(request, id):
+    form = FormPendonasian(request.POST)
+    pendonasian = Pendonasian.objects.all()
+    if request.method == 'POST':
+        database = Donasi.objects.get(id = id)
+        response['id_donasi'] = id
+        response['nominal_donasi'] = request.POST['nominal_donasi']
+        response['nama_pendonasi'] = request.POST['nama_pendonasi']
+        response['metode_donasi'] = request.POST['metode_donasi']
+        response['hp_email'] = request.POST['hp_email']
+        response['dukungan'] = request.POST['dukungan']
+        data = Pendonasian(
+            id_donasi = response['id_donasi'],
+            nominal_donasi = response['nominal_donasi'],
+            nama_pendonasi = response['nama_pendonasi'],
+            metode_donasi = response['metode_donasi'],
+            hp_email = response['hp_email'],
+            dukungan = response['dukungan'],
+        )
+        data.save()
+        Form = FormPendonasian() 
+        return render(request, 'warning/berhasil-unggah.html', {'database' : database, 'pendonasian': pendonasian})
+    else:
+        donasi = Donasi.objects.get(id = id)
+        form = FormPendonasian()
+        context = {
+            'form' : form,
+            'donasi' : donasi
+        }
+        return render(request, 'opendonasi/melakukandonasi.html', context)
+
+def list_donasi(request, id):
+    donasi = Donasi.objects.get(id = id)
+    pendonasian = Pendonasian.objects.all().values()
+    return render(request, 'opendonasi/list-donasi.html', {'pendonasian' : pendonasian, 'donasi' : donasi})
+
+def delete_pendonasian(request, id_donasi, id_pendonasian):
+    hasildonasi = Pendonasian.objects.get(id = id_pendonasian)
+    donasi = Donasi.objects.get(id = id_donasi)
+    hasildonasi.delete()
+    pendonasian = Pendonasian.objects.all().values()
+    return render(request, 'opendonasi/list-donasi.html', {'pendonasian' : pendonasian, 'donasi' : donasi})
+
+def berhasil_donasi(request, id_donasi, id_pendonasian):
+    hasildonasi = Pendonasian.objects.get(id = id_pendonasian)
+    donasi = Donasi.objects.get(id = id_donasi)
+    hasildonasi.delete()
+    pendonasian = Pendonasian.objects.all().values()
+    return render(request, 'opendonasi/list-donasi.html', {'pendonasian' : pendonasian, 'donasi' : donasi})
 
 def profil(request):
     testimoni = Testimoni.objects.all().values()
@@ -230,7 +276,6 @@ def buat_testimoni(request):
         data = Testimoni(nama_user = response['nama_user'], nilai_user = response['nilai_user'], komentar_user = response['komentar_user'])
         data.save()
         form = FormAdopt()
-        database = Testimoni.objects.all()
         return render(request, 'warning/berhasil-unggah.html', {'database': database})
     if request.method == 'DELETE':
         if 'DeleteAll' in request.DELETE:
@@ -276,8 +321,6 @@ def buat_forum(request, id):
         }
         return render(request, 'openadopt/buat-forum.html', context)
 
-def melakukan_donasi(request):
-    return render(request, 'openadopsi/melakukandonasi.html')
 
 def chatpage(request):
     return render(request, 'chatting/chatpage.html')
