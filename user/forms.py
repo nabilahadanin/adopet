@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm
-from .models import Hewan, RequestAdopsi, Donasi, Testimoni, Artikel, Pendonasian, Forum
+from .models import Hewan, RequestAdopsi, Donasi, Testimoni, Artikel, Pendonasian, Forum, ReplyForum
 
 class FormAdopt(forms.ModelForm):
     class Meta:
@@ -111,4 +111,14 @@ class FormForum(forms.ModelForm):
         widgets = {
             'judul_forum' : forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'judul forum'}),
             'isi_forum' : forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'isi forum'}),
+        }
+
+class FormReply(forms.ModelForm):
+    class Meta:
+        model = ReplyForum
+        fields = (
+            'id_forum', 'reply_forum'
+        )
+        widgets = {
+            'reply_forum': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'tuliskan reply disini'}),
         }

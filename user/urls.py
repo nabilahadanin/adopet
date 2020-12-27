@@ -13,6 +13,7 @@ urlpatterns = [
     path('form-open-adopt/', views.form_open_adopt, name='form_open_adopt'),
     path('detail-open-adopt/<id>/', views.detail_open_adopt, name='detail_open_adopt'),
     path('detail-open-adopt/<id>/buat-forum/', views.buat_forum, name='buat_forum'),
+    path('detail-open-adopt/<id_hewan>/forum/<id_forum>/reply/', views.reply_forum, name='reply_forum'),
     path('detail-open-adopt/<id>/form-pengadopsian/', views.form_pengadopsian, name='form_pengadopsian'),
     path('detail-open-adopt/<id>/detail-pengadopsian/', views.detail_pengadopsian, name='detail_pengadopsian'),
     path('detail-open-adopt/<id_hewan>/detail-pengadopsian/<id_adopsi>/delete', views.delete_request_adopsi, name='delete_request_adopsi'),
