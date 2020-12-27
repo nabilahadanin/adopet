@@ -302,7 +302,7 @@ def buat_forum(request, id):
         response['id_adopt'] = id
         response['judul_forum'] = request.POST['judul_forum']
         response['isi_forum'] = request.POST['isi_forum']
-        data = Forum(judul_forum = response['judul_forum'], isi_forum = response['isi_forum'])
+        data = Forum(id_adopt = response['id_adopt'], judul_forum = response['judul_forum'], isi_forum = response['isi_forum'])
         data.save()
         form = FormForum()
         forum = Forum.objects.all()
