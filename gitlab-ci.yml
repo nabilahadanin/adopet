@@ -1,4 +1,5 @@
 stages:
+  - test
   - deploy
 
 Test:
@@ -25,6 +26,8 @@ Test:
 
 
 Deployment:
+  only : 
+    - develop-2
   image: ruby:2.4
   stage: deploy
   before_script:
@@ -34,9 +37,6 @@ Deployment:
     - dpl --provider=heroku --app=$HEROKU_APPNAME --api-key=$HEROKU_APIKEY
     - export HEROKU_API_KEY=$HEROKU_APIKEY
     - heroku run --app $HEROKU_APPNAME migrate
-  only : 
-    - master 
-    - develop-2
   environment:
     name: production
     url: $HEROKU_APP_HOST
