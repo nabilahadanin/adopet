@@ -10,7 +10,7 @@
         <div class="post-adopsi">
             <h2 class="judul-post-adopsi">List Request Pengadopsian</h2>
             {% for i in pengadopsian %}
-            {% if i.id_hewan == hewan.id %}
+            {% if i.id_hewan|stringformat:"s" == hewan.id|stringformat:"s" %}
             <div class="col-7">
                 <p class="form-label">Nama Lengkap : {{i.nama_pengadopsi}} </p>
                 <p class="form-label">Nomor HP : {{i.nomor_hp}} </p>
