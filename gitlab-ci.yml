@@ -1,5 +1,4 @@
 stages:
-  - test
   - deploy
 
 Test:
@@ -38,5 +37,8 @@ Deployment:
   environment:
     name: production
     url: $HEROKU_APP_HOST
+  only : 
+    - master 
+    - develop-2
 
 
