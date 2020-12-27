@@ -320,6 +320,7 @@ def buat_forum(request, id):
         context = {
             'form' : form,
             'forum' : forum,
+            'hewan' : hewan,
         }
         return render(request, 'openadopt/buat-forum.html', context)
 
