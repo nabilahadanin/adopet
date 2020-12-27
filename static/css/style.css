@@ -3,6 +3,8 @@ body{
     font-family: Nunito !important;
 }
 
+* {box-sizing: border-box;}
+
 #navbar-custom{
     background-color: #002c3e !important;
 }
@@ -58,6 +60,10 @@ body{
     width: 20% !important;
     background-color: #f7444e !important;
     color: #F7F8F3 !important;
+}
+
+.btn-outline-primary:hover, .btn-outline-primary:focus, .btn-outline-primary:active, .btn-outline-primary.active {
+    background-color: #ddeaf0 !important;
 }
 
 .unggah{
