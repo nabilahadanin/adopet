@@ -45,9 +45,10 @@ def form_open_adopt(request):
         return render(request, 'openadopt/form-open-adopt.html', context)
 
 def detail_open_adopt(request, id):
-	hewan = Hewan.objects.get(id = id)
-	args = {'hewan' : hewan}
-	return render(request, 'openadopt/detail-open-adopt.html', args)
+    forum = Forum.objects.all() 
+    hewan = Hewan.objects.get(id = id)
+    args = {'hewan' : hewan, 'forum' : forum}
+    return render(request, 'openadopt/detail-open-adopt.html', args)
 
 def beranda(request):
     database = Hewan.objects.all().values()
@@ -298,6 +299,7 @@ def buat_forum(request, id):
     forum = Forum.objects.all()
     hewan = Hewan.objects.get(id = id)
     if request.method == 'POST':
+        response['id_adopt'] = id
         response['judul_forum'] = request.POST['judul_forum']
         response['isi_forum'] = request.POST['isi_forum']
         data = Forum(judul_forum = response['judul_forum'], isi_forum = response['isi_forum'])

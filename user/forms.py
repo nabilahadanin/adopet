@@ -106,7 +106,7 @@ class FormForum(forms.ModelForm):
     class Meta:
         model = Forum
         fields = (
-            'judul_forum', 'isi_forum'
+            'id_adopt', 'judul_forum', 'isi_forum'
         )
         widgets = {
             'judul_forum' : forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'judul forum'}),

@@ -47,16 +47,18 @@
 </div>
 <br><br>
 <hr class="line">
-<div>
-    <div class="container">
+<div class="container forum">
+    <div>
         <div class="row justify-content-md-center">
             <h1 class="judul-form">Forum Q&A</h1><br>
         </div>
     </div>
 
-    <div class="container">
+    <div>
+        <div class="list-forum">
         {% if forum %}
             {% for i in forum %}
+            {% if i.id_adopt == hewan.id %}
             <div class="row justify-content-center">
                 <div class="col-md-7">
                     <div class="w3-card-4" style="width:70%">
@@ -71,15 +73,17 @@
                     </div>
                 </div>
             </div>
+            {% endif %}
             {% endfor %}
         {% else %}
 		<div class="container my-5 text-center">
 			Sorry, there are no current posts.<br><strong>Check back soon!</strong>
 		</div>
         {% endif %}
+        </div>
     </div>
-
-   
+</div>
+<div>
     <div class="row justify-content-center unggah">
         <a type= "button" class ="btn btn-adopsi" style="margin-bottom: 10vh;" onclick="location.href='/user/detail-open-adopt/{{hewan.id}}/buat-forum/'">Buat Forum</a>
     </div>

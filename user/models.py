@@ -122,5 +122,6 @@ class Pendonasian(models.Model):
     anonim_donasi =  models.BooleanField(default = False)
 
 class Forum(models.Model):
+    id_adopt = models.CharField(max_length = 50, default ="")
     judul_forum = models.CharField(max_length = 50)
     isi_forum = models.CharField(max_length = 500)

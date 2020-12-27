@@ -7,6 +7,7 @@
         <div class="list-donasi">
             <h2>List Pendonasian</h2>
             {% for i in pendonasian %}
+            {% if i.id_donasi == donasi.id %}
             <div class="col-7">
                 <p class="form-label">Nama Lengkap : {{i.nama_pendonasi}} </p>
                 <p class="form-label">Nomor HP / Email : {{i.hp_email}} </p>
@@ -26,6 +27,7 @@
                     </div>     
                 </form>  
             </div>
+            {% endif %}
             {% endfor %}
         </div>
 	</div>
