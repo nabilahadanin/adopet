@@ -69,8 +69,14 @@
                             <hr>
                             <p>{{i.isi_forum}}</p><br>
                         </div>
-                        <p>{{i.id_adopt}} == {{hewan.id}}</p>
-                        <button class="w3-button w3-block w3-dark-grey">Reply Forum</button>
+                        <div class="w3 container">
+                            {% for j in replyforum %}
+                            {% if j.id_forum|stringformat:"s" == i.id|stringformat:"s" %}
+                            <p>{{j.reply_forum}}</p>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                        <a type="button" class="w3-button w3-block w3-dark-grey" onclick="location.href='/user/detail-open-adopt/{{hewan.id}}/forum/{{i.id}}/reply/'">Reply Forum</a>
                     </div>
                 </div>
             </div>

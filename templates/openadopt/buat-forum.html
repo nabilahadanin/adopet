@@ -1,9 +1,11 @@
 {% extends 'head.html' %}
 {% block content_block %}
 {% load static %}
-<a href="/user/detail-open-adopt/" class="btn btn-kembali"> < Kembali</a>
+<a type="button" onclick="location.href='/user/detail-open-adopt/{{hewan.id}}/'" class="btn btn-kembali"> < Kembali</a>
 <div class="container">
-	<p class="form-forum">Form Pembuatan Forum</p>
+	<div class="row justify-content-md-center">
+		<p class="judul-form">Form Pembuatan Forum</p><br>
+	</div>
 	<form method="POST"> {% csrf_token %}
 		<p class="form-label">Judul Forum :</p>
         <input type="text" class="form-control" name="judul_forum" required>

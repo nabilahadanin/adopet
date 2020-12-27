@@ -125,3 +125,7 @@ class Forum(models.Model):
     id_adopt = models.CharField(max_length = 50, default ="")
     judul_forum = models.CharField(max_length = 50)
     isi_forum = models.CharField(max_length = 500)
+
+class ReplyForum(models.Model):
+    id_forum = models.CharField(max_length = 50, default ="")
+    reply_forum = models.CharField(max_length = 500)

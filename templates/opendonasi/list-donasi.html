@@ -1,7 +1,7 @@
 {% extends 'navbar.html' %}
 {% block content_block %}
 {% load static %}
-<a href="{% url 'user:beranda' %}" class="btn btn-kembali"> < Kembali</a>
+<a type="button" onclick="location.href='/user/detail-donasi/{{donasi.id}}/'" class="btn btn-kembali"> < Kembali</a>
 <div class="container">
     <div class="row justify-content-center">
         <div class="list-donasi">

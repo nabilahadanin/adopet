@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="{% static 'css/openadopt.css' %}" type="text/CSS">
 </head>
-<a href="{% url 'user:beranda' %}" class="btn btn-kembali"> < Kembali</a>
+<a type="button" onclick="location.href='/user/detail-open-adopt/{{hewan.id}}/'" class="btn btn-kembali"> < Kembali</a>
 <div class="container">
     <div class="row justify-content-center">
         <div class="post-adopsi">

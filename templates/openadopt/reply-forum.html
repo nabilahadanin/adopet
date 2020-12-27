@@ -1,0 +1,17 @@
+{% extends 'head.html' %}
+{% block content_block %}
+{% load static %}
+<a type="button" onclick="location.href='/user/detail-open-adopt/{{hewan.id}}/'" class="btn btn-kembali"> < Kembali</a>
+<div class="container">
+	<div class="row justify-content-md-center">
+		<p class="judul-form">Reply Forum {{forum.id}}</p><br>
+	</div>
+	<form method="POST"> {% csrf_token %}
+        <p class="form-label">Tuliskan reply-mu di bawah ini :</p>
+        <input type="text" class="form-control" name="reply_forum" required>
+        <div class="row justify-content-center unggah">
+			<button type="submit" class="btn btn-secondary">Kirim</button>
+        </div>
+    </form>
+</div>
+{% endblock content_block %}

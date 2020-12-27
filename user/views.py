@@ -4,8 +4,8 @@ from django.http import JsonResponse
 from django.conf import settings
 import copy
 
-from .forms import FormAdopt, FormFoto, FormRequestAdopsi, FormDonasi, FormRequestArtikel, FormTestimoni, FormForum, FormPendonasian
-from .models import Hewan, FotoHewan, RequestAdopsi, Donasi, Artikel, Testimoni, Forum, Pendonasian
+from .forms import FormAdopt, FormFoto, FormRequestAdopsi, FormDonasi, FormRequestArtikel, FormTestimoni, FormForum, FormPendonasian, FormReply
+from .models import Hewan, FotoHewan, RequestAdopsi, Donasi, Artikel, Testimoni, Forum, Pendonasian, ReplyForum
 from adminadopet.models import PostDonasi
 
 response = {}
@@ -46,8 +46,9 @@ def form_open_adopt(request):
 
 def detail_open_adopt(request, id):
     forum = Forum.objects.all() 
+    replyforum = ReplyForum.objects.all()
     hewan = Hewan.objects.get(id = id)
-    args = {'hewan' : hewan, 'forum' : forum}
+    args = {'hewan' : hewan, 'forum' : forum, 'replyforum' : replyforum}
     return render(request, 'openadopt/detail-open-adopt.html', args)
 
 def beranda(request):
@@ -307,21 +308,36 @@ def buat_forum(request, id):
         form = FormForum()
         forum = Forum.objects.all()
         return render(request, 'openadopt/detail-open-adopt.html', {'forum': forum, 'hewan': hewan})
-    if request.method == 'DELETE':
-        if 'DeleteAll' in request.DELETE:
-            Forum.objects.all().delete()
-            context = {
-                'form' : form,
-                'forum' : forum
-            }
-            return render(request, 'profil/profil.html', context)
     else:
         form = FormForum()
         context = {
             'form' : form,
             'forum' : forum,
+            'hewan' : hewan,
         }
         return render(request, 'openadopt/buat-forum.html', context)
+
+def reply_forum(request, id_hewan, id_forum):
+    hewan = Hewan.objects.get(id = id_hewan)
+    forum = Forum.objects.get(id = id_forum)
+    replyforum = ReplyForum.objects.all()
+    form = FormReply(request.POST)
+    if request.method == 'POST':
+        response['id_forum'] = forum.id
+        response['reply_forum'] = request.POST['reply_forum']
+        data = ReplyForum(id_forum = response['id_forum'], reply_forum = response['reply_forum'])
+        data.save()
+        form = FormReply()
+        return render(request, 'warning/berhasil-kirim.html')
+    else:
+        form = FormReply()
+        context = {
+            'form' : form,
+            'forum' : forum,
+            'hewan' : hewan,
+        }
+        return render(request, 'openadopt/reply-forum.html', context)
+
 
 
 def chatpage(request):

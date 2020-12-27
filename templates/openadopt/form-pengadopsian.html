@@ -1,6 +1,6 @@
 {% extends 'navbar.html' %}
 {% block content_block %}
-<a href="/user/detail-open-adopt/" class="btn btn-kembali"> < Kembali</a>
+<a type="button" onclick="location.href='/user/detail-open-adopt/{{hewan.id}}/'" class="btn btn-kembali"> < Kembali</a>
 <div class="container">
 	<div class="row justify-content-md-center">
 		<p class="judul-form">Form Pengadopsian {{pengadopsian.nama_hewan}}</p><br>
