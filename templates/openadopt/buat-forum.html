@@ -1,7 +1,7 @@
 {% extends 'head.html' %}
 {% block content_block %}
 {% load static %}
-<a href="{% url 'user:beranda' %}" class="btn btn-kembali"> < Kembali</a>
+<a href="/user/detail-open-adopt/" class="btn btn-kembali"> < Kembali</a>
 <div class="container">
 	<p class="form-forum">Form Pembuatan Forum</p>
 	<form method="POST"> {% csrf_token %}
