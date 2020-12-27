@@ -2,7 +2,7 @@
 
 AdoPet adalah aplikasi berbasis website untuk menyatukan para pecinta hewan dan orang-orang yang peduli terhadap kesejahteraan hewan dari seluruh kalangan untuk bekerja sama mensejahterakan kehidupan hewan-hewan tersebut.
 
-develop : [![pipeline status](https://gitlab.com/m.yoga.mahendra/adopet/badges/master/pipeline.svg)](https://gitlab.com/m.yoga.mahendra/adopet/-/commits/master) [![coverage report](https://gitlab.com/m.yoga.mahendra/adopet/badges/master/coverage.svg)](https://gitlab.com/m.yoga.mahendra/adopet/-/commits/master) 
+develop : [![pipeline status](https://gitlab.com/m.yoga.mahendra/adopet/badges/develop-2/pipeline.svg)](https://gitlab.com/m.yoga.mahendra/adopet/-/commits/develop-2) 
 
 ## Rekayasa Perangkat Lunak 
 
