@@ -6,7 +6,7 @@
 <div id="particles-js">
 </div>
 
-<div class="container content">
+<div class="container">
     <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-12 d-flex justify-content-center align-items-center flex-column margin">
             <div class="heading1">
@@ -18,7 +18,75 @@
             </div>
         </div>
     </div>
+    <h1 class="text-center pt-4" style="margin-top: 10%; margin-bottom: 5%;">BERANDA</h1>
+    <div class="container">
+        <div class="row" id="all-pet">
+        {% if database %}
+            {% for i in database %}
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 card-square">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <div class="card-judul">
+                                <h5 class="card-title">{{i.nama_hewan}}</h5>
+                            </div>
+                            <div class="card-isi">
+                                <p class="card-text">{{i.jenis_hewan}} @ {{i.domisili_hewan}}</p>
+                                <p class="card-keterangan">{{i.keterangan}}</p>									 				
+                            </div class="card-bottom">
+                            <p class="card-kategori">#{{i.kategori}}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}	
+        {% if donasi %}
+            {% for j in donasi %}
+            {% if j.verifikasi %}
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 card-square">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="card-judul">
+                            <h5 class="card-title">{{j.nama_hewan}}</h5>
+                        </div>
+                        <div class="card-isi">
+                            <p class="card-text">{{j.lokasi_perawatan}} - {{j.biaya_perawatan}}</p>
+                            <p class="card-keterangan">{{j.keterangan}}</p>									 				
+                        </div class="card-bottom">
+                        <p class="card-kategori">#{{j.kategori}}</p>
+                    </div>
+                </div>
+            </div>
+            {% endif %}	
+            {% endfor %}
+        {% endif %}
+        {% if artikel %}
+            {% for k in artikel %}
+            {% if k.verifikasi_artikel %}
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 card-square">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="card-judul">
+                            <h5 class="card-title">{{k.judul_artikel}}</h5>
+                        </div>
+                        <div class="card-isi">
+                            <p class="card-keterangan">{{k.isi_artikel}}</p>									 				
+                        </div class="card-bottom">
+                            <p class="card-kategori">#{{k.tag_artikel}}</p>
+                    </div>
+                </div>
+            </div>
+            {% endif %}	
+            {% endfor %}
+        {% else %}
+		<div class="container my-5 text-center">
+			Sorry, there are no current posts.<br><strong>Check back soon!</strong>
+		</div>
+        {% endif %}			
+        </div>
+    </div>
 </div>
+
+    
 
 {% endblock content_block %}
 
@@ -28,8 +96,6 @@
         margin: 0;
         padding: 0;
         font-family: 'Poppins', sans-serif;
-        overflow: hidden;
-        height: 100vh;
     }
 
     .text-primary{
