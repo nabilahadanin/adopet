@@ -3,6 +3,7 @@ stages:
 
 Deployment:
   only : 
+    - master
     - develop-2
   image: ruby:2.4
   stage: deploy
