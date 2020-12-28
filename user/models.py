@@ -129,3 +129,9 @@ class Forum(models.Model):
 class ReplyForum(models.Model):
     id_forum = models.CharField(max_length = 50, default ="")
     reply_forum = models.CharField(max_length = 500)
+
+class HistoryChat(models.Model):
+    pengirim = models.CharField(max_length = 500, default ="")
+    penerima = models.CharField(max_length = 500, default ="")
+    datetimep = models.DateTimeField(auto_now=True)
+    pesan = models.CharField(max_length = 999)

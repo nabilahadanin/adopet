@@ -31,14 +31,25 @@ $("#status-options ul li").click(function() {
 });
 
 function newMessage() {
+	sender = $("#username").val();
+	receiver = $("#username").val();
 	message = $(".message-input input").val();
 	if($.trim(message) == '') {
 		return false;
 	}
-	$('<li class="replies"><img src="http://emilcarlsson.se/assets/mikeross.png" alt="" /><p>' + message + '</p></li>').appendTo($('.messages ul'));
-	$('.message-input input').val(null);
-	$('.contact.active .preview').html('<span>You: </span>' + message);
-	$(".messages").animate({ scrollTop: $(document).height() }, "fast");
+	
+	$.ajax({
+		url: "/send",
+		method: "POST",
+		data : {
+			sender: sender,
+			receiver: receiver,
+			message: message,
+		},
+        success : function(json) {
+            console.log("Message " + message+ " from " + sender + " to " + receiver + "sent successfully.");
+        }
+    })
 };
 
 function openChat(username) {
@@ -46,13 +57,15 @@ function openChat(username) {
 	x = document.getElementsByClassName("hideAble");
 	for (i = 0; i < x.length; i++) {
 	  x[i].style.display = "none";
+	  x[i].classList.remove("active");
 	}
 	document.getElementById(username).style.display = "block";
-	document.getElementById(username+"U").style.display = "block";
+	document.getElementsById(username).className = "active";
 }
 
 $('.submit').click(function() {
   newMessage();
+  location.reload();
 });
 
 $(window).on('keydown', function(e) {

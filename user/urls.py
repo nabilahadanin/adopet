@@ -26,6 +26,7 @@ urlpatterns = [
     path('detail-artikel/<id>/', views.detail_artikel, name='detail_artikel'),
     path('profil/buat-testimoni/', views.buat_testimoni, name='buat_testimoni'),
     path('chatpage/', views.chatpage, name='chatpage'),
+    path('chatpage/send', views.send_message, name='send_message'),
     path('list_hewan/', views.list_hewan, name='list_hewan'),
     path('list_foto/', views.list_foto, name='list_foto'),
     path('search/', views.search, name='search')

@@ -22,12 +22,13 @@
 <script>try{Typekit.load({ async: true });}catch(e){}</script>
 <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css'><link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css'>
 
+{% if user.is_authenticated %}
 <div id="frame">
 	<div id="sidepanel">
 		<div id="profile">
 			<div class="wrap">
 				<img id="profile-img" src="http://emilcarlsson.se/assets/mikeross.png" class="online" alt="" />
-				<p>Yoga Ganteng</p>
+				<p>{{user.username}}</p>
 				<i class="fa fa-chevron-down expand-button" aria-hidden="true"></i>
 				<div id="status-options">
 					<ul>
@@ -45,191 +46,55 @@
 		</div>
 		<div id="contacts">
 			<ul>
-				<li class="contact" onclick="openChat('Steven')">
-					<div class="wrap">
-						<span class="contact-status online"></span>
-						<img src="http://emilcarlsson.se/assets/louislitt.png" alt="" />
-						<div class="meta">
-							<p class="name">Steven</p>
-							<p class="preview">Hmm baiklah terima kasih call center Github.</p>
+				{% for userx in users %}
+					<li class="contact" onclick="openChat('{{ userx.username }}')">
+						<div class="wrap">
+							<span class="contact-status online"></span>
+							<img src="{% static 'img/img_avatar.png' %}" alt="pict" />
+							<div class="meta">
+								<p class="name">{{userx.username}}</p>
+								<p class="preview">Click to Open Chat</p>
+							</div>
 						</div>
-					</div>
-				</li>
-				<li class="contact" onclick="openChat('Adoptee 123')">
-					<div class="wrap">
-						<span class="contact-status busy"></span>
-						<img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
-						<div class="meta">
-							<p class="name">Adoptee 123</p>
-							<p class="preview">Baiklah, Terima kasih.</p>
-						</div>
-					</div>
-				</li>
-				<li class="contact">
-					<div class="wrap">
-						<span class="contact-status away"></span>
-						<img src="http://emilcarlsson.se/assets/rachelzane.png" alt="" />
-						<div class="meta">
-							<p class="name">Zafira</p>
-							<p class="preview">Halo hard carry Front End Dev</p>
-						</div>
-					</div>
-				</li>
-				<li class="contact">
-					<div class="wrap">
-						<span class="contact-status online"></span>
-						<img src="http://emilcarlsson.se/assets/donnapaulsen.png" alt="" />
-						<div class="meta">
-							<p class="name">Nabh</p>
-							<p class="preview">Halo hardcarry backend</p>
-						</div>
-					</div>
-				</li>
-				<li class="contact">
-					<div class="wrap">
-						<span class="contact-status busy"></span>
-						<img src="http://emilcarlsson.se/assets/jessicapearson.png" alt="" />
-						<div class="meta">
-							<p class="name">Adopter 1</p>
-							<p class="preview">Halo, apa benar ini adopter 1?</p>
-						</div>
-					</div>
-				</li>
-				<li class="contact">
-					<div class="wrap">
-						<span class="contact-status"></span>
-						<img src="http://emilcarlsson.se/assets/haroldgunderson.png" alt="" />
-						<div class="meta">
-							<p class="name">Adopter 2</p>
-							<p class="preview">Halo, apa benar ini adopter 2?</p>
-						</div>
-					</div>
-				</li>
-				<li class="contact">
-					<div class="wrap">
-						<span class="contact-status"></span>
-						<img src="http://emilcarlsson.se/assets/danielhardman.png" alt="" />
-						<div class="meta">
-							<p class="name">Adopter 3</p>
-							<p class="preview">Halo, apa benar ini adopter 3?</p>
-						</div>
-					</div>
-				</li>
-				<li class="contact">
-					<div class="wrap">
-						<span class="contact-status busy"></span>
-						<img src="http://emilcarlsson.se/assets/katrinabennett.png" alt="" />
-						<div class="meta">
-							<p class="name">Adopter 4</p>
-							<p class="preview">Halo, apa benar ini adopter 4?</p>
-						</div>
-					</div>
-				</li>
-				<li class="contact">
-					<div class="wrap">
-						<span class="contact-status"></span>
-						<img src="http://emilcarlsson.se/assets/charlesforstman.png" alt="" />
-						<div class="meta">
-							<p class="name">Adopter 5</p>
-							<p class="preview">Halo, apa benar ini adopter 5?</p>
-						</div>
-					</div>
-				</li>
-				<li class="contact">
-					<div class="wrap">
-						<span class="contact-status"></span>
-						<img src="http://emilcarlsson.se/assets/jonathansidwell.png" alt="" />
-						<div class="meta">
-							<p class="name">Adopter 6</p>
-							<p class="preview">Halo, apa benar ini adopter 6?</p>
-						</div>
-					</div>
-				</li>
+					</li>
+				{% endfor %}
 			</ul>
 		</div>
 	</div>
-	<div class="content">
-		<div class="contact-profile hideAble" id="StevenU" style="display:none;">
-			<img src="http://emilcarlsson.se/assets/louislitt.png" alt="" />
-			<p>Steven</p>
+	<div class="content">		
+		{% for userx in users %}
+		<div class="contact-profile hideAble uname" id={{userx.username}} style="display:none;">
+			<img src="{% static 'img/img_avatar.png' %}" alt="" />
+			<p>{{userx.username}}</p>
 		</div>
-		<div class="contact-profile hideAble" id="Adoptee 123U" style="display:block;">
-			<img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
-			<p>Adoptee 123</p>
-		</div>
-		<div class="messages hideAble" id="Steven" style="display:none;">
+		<div class="messages hideAble" id="{{userxusername}}" style="display:none;">
 			<ul>
-				<li class="sent">
-					<img src="http://emilcarlsson.se/assets/louislitt.png" alt="" />
-					<p>Halo, apakah Call Center Github sedang buka?</p>
-				</li>
-				<li class="replies">
-					<img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
-					<p>Halo, iya benar sedang buka.</p>
-				</li>
-				<li class="replies">
-					<img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
-					<p>Saya Admin Call Center Github.</p>
-				</li>
-				<li class="sent">
-					<img src="http://emilcarlsson.se/assets/louislitt.png" alt="" />
-					<p>Mau nanya, cara make github gimana ya?</p>
-				</li>
-				<li class="replies">
-					<img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
-					<p>Jadi gini, anda udah baca about us belum?</p>
-				</li>
-				<li class="replies">
-					<img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
-					<p>Jika belum, mohon cek di github.com/about</p>
-				</li>
-				<li class="sent">
-					<img src="http://emilcarlsson.se/assets/louislitt.png" alt="" />
-					<p>Hmm baiklah terima kasih call center Github.</p>
-				</li>
+				{% for chat in chats %}				
+					{% if chat.pengirim == userx.username %}
+						<li class="sent">
+							<img src="{% static 'img/img_avatar.png' %}" alt="" />
+							<p>chat.pesan</p>
+						</li>
+					{% elif chat.penerima == userx.username %}
+						<li class="replies">
+							<img src="{% static 'img/img_avatar.png' %}" alt="" />
+							<p>chat.pesan</p>
+						</li>
+					{% endif %}
+				{% endfor %}
 			</ul>
 		</div>
-		<div class="messages hideAble" id="Adoptee 123" style="display:block;">
-			<ul>
-				<li class="replies">
-					<img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
-					<p>Halo, apa benar ini Adoptee 123?.</p>
-				</li>
-				<li class="replies">
-					<img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
-					<p>Saya Mimin 1.</p>
-				</li>
-				<li class="sent">
-					<img src="http://emilcarlsson.se/assets/mikeross.png" alt="" />
-					<p>Ya, benar ini adoptee 123. Apa ada yang bisa saya bantu?</p>
-				</li>
-				<li class="replies">
-					<img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
-					<p>Jadi gini, anda suka membuat open adopsi apa saja?.</p>
-				</li>
-				<li class="replies">
-					<img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
-					<p>Asumsikan saya sedang mewawancarai anda.</p>
-				</li>
-				<li class="sent">
-					<img src="http://emilcarlsson.se/assets/mikeross.png" alt="" />
-					<p>Saya suka kucing karena mereka imut dan lucu. Bisa mengobati mereka yang mengadopsi</p>
-				</li>
-				<li class="replies">
-					<img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
-					<p>Baiklah, Terima kasih.</p>
-				</li>
-			</ul>
-		</div>
+		{% endfor %}
 		<div class="message-input">
 			<div class="wrap">
 			<input type="text" placeholder="Write your message..." />
 			<i class="fa fa-paperclip attachment" aria-hidden="true"></i>
-			<button class="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+			<button class="submit"><i class="fa fa-paper-plane" href="javascript:location.reload(true)" aria-hidden="true"></i></button>
 			</div>
 		</div>
 	</div>
 </div>
+{% endif %}
 <script src='//production-assets.codepen.io/assets/common/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js'></script><script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
 
 {% endblock content_block %}

@@ -1,11 +1,11 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.conf import settings
 import copy
 
 from .forms import FormAdopt, FormFoto, FormRequestAdopsi, FormDonasi, FormRequestArtikel, FormTestimoni, FormForum, FormPendonasian, FormReply
-from .models import Hewan, FotoHewan, RequestAdopsi, Donasi, Artikel, Testimoni, Forum, Pendonasian, ReplyForum
+from .models import Hewan, FotoHewan, RequestAdopsi, Donasi, Artikel, Testimoni, Forum, Pendonasian, ReplyForum, HistoryChat
 from adminadopet.models import PostDonasi
 
 response = {}
@@ -339,4 +339,22 @@ def reply_forum(request, id_hewan, id_forum):
         return render(request, 'openadopt/reply-forum.html', context)
 
 def chatpage(request):
-    return render(request, 'chatting/chatpage.html')
+    if(request.method == 'POST'):
+        receiver = User.objects.filter(username__icontains = request.POST.get('key'))
+        context = {
+            'users' : receiver,
+            'chat' : HistoryChat.objects.all().filter(request.POST.get('key')).order_by('penerima', 'datetimep'),
+        }
+        return render(request, 'chatting/chatpage.html', context)
+    context = {
+        'users' : User.objects.all(),
+        'chats' : HistoryChat.objects.all().order_by('penerima', 'datetimep'),
+    }
+    return render(request, 'chatting/chatpage.html', context)
+
+def send_message(request):
+    sender = request.POST.get("data")["sender"]
+    receiver = request.POST.get("data")["receiver"]
+    message = request.POST.get("data")["message"]
+    pesan = HistoryChat(pengirim = sender, penerima = receiver, pesan = message)
+    return HttpResponse("Sent")
