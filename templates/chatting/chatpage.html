@@ -72,12 +72,12 @@
 		<div class="messages hideAble" id="{{userx.username}}" style="display:none;">
 			<ul>
 				{% for chat in chats %}				
-					{% if chat.pengirim == userx.username %}
+					{% if chat.pengirim == user.username %}
 						<li class="sent">
 							<img src="{% static 'img/img_avatar.png' %}" alt="" />
 							<p>chat.pesan</p>
 						</li>
-					{% elif chat.penerima == userx.username %}
+					{% elif chat.pengirim == userx.username %}
 						<li class="replies">
 							<img src="{% static 'img/img_avatar.png' %}" alt="" />
 							<p>chat.pesan</p>
