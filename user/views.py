@@ -4,7 +4,7 @@ from django.http import JsonResponse, HttpResponse
 from django.conf import settings
 import copy
 
-from .forms import FormAdopt, FormFoto, FormRequestAdopsi, FormDonasi, FormRequestArtikel, FormTestimoni, FormForum, FormPendonasian, FormReply
+from .forms import FormAdopt, FormFoto, FormRequestAdopsi, FormDonasi, FormRequestArtikel, FormTestimoni, FormForum, FormPendonasian, FormReply, FormHistoryChat
 from .models import Hewan, FotoHewan, RequestAdopsi, Donasi, Artikel, Testimoni, Forum, Pendonasian, ReplyForum, HistoryChat
 from adminadopet.models import PostDonasi
 
@@ -185,6 +185,7 @@ def melakukan_donasi(request, id):
         response['metode_donasi'] = request.POST['metode_donasi']
         response['hp_email'] = request.POST['hp_email']
         response['dukungan'] = request.POST['dukungan']
+        response['anonim_donasi'] = request.POST.get('anonim_donasi')
         data = Pendonasian(
             id_donasi = response['id_donasi'],
             nominal_donasi = response['nominal_donasi'],
@@ -339,22 +340,25 @@ def reply_forum(request, id_hewan, id_forum):
         return render(request, 'openadopt/reply-forum.html', context)
 
 def chatpage(request):
-    if(request.method == 'POST'):
-        receiver = User.objects.filter(username__icontains = request.POST.get('key'))
-        context = {
-            'users' : receiver,
-            'chat' : HistoryChat.objects.all().filter(request.POST.get('key')).order_by('penerima', 'datetimep'),
-        }
-        return render(request, 'chatting/chatpage.html', context)
+    form = FormHistoryChat(request.POST)
     context = {
+        'form'  : form,
         'users' : User.objects.all(),
-        'chats' : HistoryChat.objects.all().order_by('penerima', 'datetimep'),
+        'chats' : HistoryChat.objects.all().values()
     }
     return render(request, 'chatting/chatpage.html', context)
 
-def send_message(request):
-    sender = request.POST.get("data")["sender"]
-    receiver = request.POST.get("data")["receiver"]
-    message = request.POST.get("data")["message"]
-    pesan = HistoryChat(pengirim = sender, penerima = receiver, pesan = message)
-    return HttpResponse("Sent")
+def send_message(request, id_pengirim, id_penerima):
+    fromuser = User.objects.get(id = id_pengirim)
+    foruser = User.objects.get(id = id_penerima)
+    if(request.method == 'POST'):
+        response['pengirim'] = fromuser.username
+        response['pesan'] = request.POST['pesan']
+        response['penerima'] = foruser.username
+        pesan = HistoryChat(pengirim = response['pengirim'], pesan = response['pesan'], penerima = response['penerima'])
+        pesan.save()
+        context = {
+            'users' : User.objects.all(),
+            'chats' : HistoryChat.objects.all().values()
+        }
+        return render(request, 'chatting/chatpage.html', context)

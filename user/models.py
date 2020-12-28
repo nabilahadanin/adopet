@@ -119,7 +119,6 @@ class Pendonasian(models.Model):
     nama_pendonasi = models.CharField(max_length = 50)
     hp_email = models.CharField(max_length = 50)
     dukungan = models.CharField(max_length = 500)
-    anonim_donasi =  models.BooleanField(default = False)
 
 class Forum(models.Model):
     id_adopt = models.CharField(max_length = 50, default ="")

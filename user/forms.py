@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm
-from .models import Hewan, RequestAdopsi, Donasi, Testimoni, Artikel, Pendonasian, Forum, ReplyForum
+from .models import Hewan, RequestAdopsi, Donasi, Testimoni, Artikel, Pendonasian, Forum, ReplyForum, HistoryChat
 
 class FormAdopt(forms.ModelForm):
     class Meta:
@@ -121,4 +121,14 @@ class FormReply(forms.ModelForm):
         )
         widgets = {
             'reply_forum': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'tuliskan reply disini'}),
+        }
+
+class FormHistoryChat(forms.ModelForm):
+    class Meta:
+        model = HistoryChat
+        fields = (
+            'pengirim', 'penerima', 'pesan'
+        )
+        widgets = {
+            'pesan': forms.TextInput(attrs={'class': 'form-control'}),
         }

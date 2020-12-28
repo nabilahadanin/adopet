@@ -69,31 +69,26 @@
 			<img src="{% static 'img/img_avatar.png' %}" alt="" />
 			<p>{{userx.username}}</p>
 		</div>
-		<div class="messages hideAble" id="{{userx.username}}" style="display:none;">
+		<div class="messages hideAble" id="{{userx.username}}" style="display:block;">
 			<ul>
-				{% for chat in chats %}				
-					{% if chat.pengirim == user.username %}
-						<li class="sent">
-							<img src="{% static 'img/img_avatar.png' %}" alt="" />
-							<p>chat.pesan</p>
-						</li>
-					{% elif chat.pengirim == userx.username %}
-						<li class="replies">
-							<img src="{% static 'img/img_avatar.png' %}" alt="" />
-							<p>chat.pesan</p>
-						</li>
-					{% endif %}
+				{% for chat in chats %}
+					<li>
+						<img src="{% static 'img/img_avatar.png' %}" alt="" />
+						<p>{{chat.pesan}}</p>
+					</li>
 				{% endfor %}
 			</ul>
 		</div>
-		{% endfor %}
+		<form method="POST" action="{% url 'user:send_message' user.id userx.id %}"> {% csrf_token %}
 		<div class="message-input">
 			<div class="wrap">
-			<input type="text" placeholder="Write your message..." />
-			<i class="fa fa-paperclip attachment" aria-hidden="true"></i>
-			<button class="submit"><i class="fa fa-paper-plane" href="javascript:location.reload(true)" aria-hidden="true"></i></button>
+				<input type="text" placeholder="Write your message..." name="pesan" required>
+				<i class="fa fa-paperclip attachment" aria-hidden="true"></i>
+				<button type="submit" class="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
 			</div>
 		</div>
+		</form>
+		{% endfor %}
 	</div>
 </div>
 {% endif %}
