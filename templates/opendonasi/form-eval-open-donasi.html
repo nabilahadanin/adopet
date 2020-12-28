@@ -34,15 +34,15 @@
             <p class="jawaban">{{donasi.biaya_perawatan}}</p>  
         </div>
     </div>
-    <div class="row justify-content-center unggah">
+    <div class="row justify-content-around unggah">
         <form method ="POST" action="{% url 'adminadopet:delete_open_donasi' donasi.id %}">{% csrf_token %}
             <div class="col-6">
-                <button type="submit" class="Delete">Tolak</button>
+                <button type="submit" class="btn btn-eval Delete">Tolak</button>
             </div>     
         </form>
         <form method ="POST" action="{% url 'adminadopet:eval_open_donasi' donasi.id %}">{% csrf_token %}
             <div class="col-6">
-                <button type="submit" class="Unggah">Unggah</button>
+                <button type="submit" class="btn btn-eval Unggah">Unggah</button>
             </div>     
         </form>  
     </div>
