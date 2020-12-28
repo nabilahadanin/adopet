@@ -209,3 +209,11 @@ body{
     margin-left: 8vh;
     margin-right: 8vh;
 }
+
+.btn-eval{
+    background-color: #f7444e !important;
+    color: #F7F8F3 !important;
+    margin-top: 10vh !important;
+    margin-bottom: 10vh !important;
+    margin-left: 600% !important;
+}
