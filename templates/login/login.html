@@ -2,16 +2,31 @@
 
 {% block content_block %}
 <div id="particles-js"></div>
-<div class="container">
+<div class="container" style="padding-top: 8vh;">
     <div class="row justify-content-center login">
-        <img src="/static/images/logo.png" height="25%" width="25%">
+        <img src="/static/images/logo.png" style="z-index: 100; position: relative;" height="25%" width="25%">
     </div>
     <div class="row justify-content-center login">
         <a type="button" class="btn btn-login" href="/user/">Login menggunakan Google</a>
     </div>
     <div class="row justify-content-center login-admin">
-        <a href="/login-admin">Anda Admin? Login di sini.</a>
+        <a href="/login-admin" style="z-index: 100; position: relative;">Anda Admin? Login di sini.</a>
     </div>
 </div>
 
 {% endblock content_block %}
+
+{% block custom_style %}
+<style>
+    body{
+        margin: 0;
+        padding: 0;
+        font-family: 'Poppins', sans-serif;
+        overflow: hidden !important;
+    }
+
+    .text-primary{
+        color:#002c3e !important;
+    }
+</style>
+{% endblock custom_style %}
