@@ -9,7 +9,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="list-donasi">
-            <h2 class="judul-post-adopsi">List Pendonasian</h2>
+            <h2 class="judul-post-adopsi" style="padding-bottom: 3vh;">List Pendonasian</h2>
             {% for i in pendonasian %}
             {% if i.id_donasi|stringformat:"s" == donasi.id|stringformat:"s" %}
             <div style="border: 1px solid #002c3e; padding: 20px; margin-top: 20px;">
@@ -38,4 +38,5 @@
         </div>
 	</div>
 </div>
+<br><br>
 {% endblock content_block %}
