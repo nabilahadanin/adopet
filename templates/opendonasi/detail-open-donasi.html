@@ -1,0 +1,43 @@
+{% extends 'navbar.html' %}
+{% block content_block %}
+{% load static %}
+<head>
+	<link rel="stylesheet" href="{% static 'css/openadopt.css' %}" type="text/CSS">
+</head>
+<a href="{% url 'user:beranda' %}" class="btn btn-kembali"> < Kembali</a>
+<div class="container">
+	<div class="row justify-content-md-center">
+		<p class="judul-form">Open Donasi untuk {{donasi.nama_hewan}}</p><br>
+	</div>
+</div>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-7">
+            <p class="form-label">Nama Hewan :</p>
+            <p class="jawaban">{{donasi.nama_hewan}}</p>
+            <p class="form-label">Jenis Hewan :</p>
+            <p class="jawaban">{{donasi.jenis_hewan}}</p>
+            <p class="form-label">Jenis Kelamin Hewan :</p>
+            <p class="jawaban">{{donasi.jenis_kelamin_hewan}}</p>
+            <p class="form-label">Usia Hewan :</p>
+            <p class="jawaban">{{donasi.usia_hewan}}</p>
+            <p class="form-label">Domisili Hewan :</p>
+            <p class="jawaban">{{donasi.domisili_hewan}}</p>
+            <p class="form-label">Keterangan :</p>
+            <p class="jawaban">{{donasi.keterangan}}</p>
+            <p class="form-label">Kategori :</p>
+            <p class="jawaban">{{donasi.kategori}}</p>
+            <p class="form-label">Kondisi Kesehatan Secara Detail :</p>
+            <p class="jawaban">{{donasi.kondisi_kesehatan}}</p>
+            <p class="form-label">Lokasi Perawatan/Pengobatan :</p>
+            <p class="jawaban">{{donasi.lokasi_perawatan}}</p>
+            <p class="form-label">Biaya Perawatan/Pengobatan :</p>
+            <p class="jawaban">{{donasi.biaya_perawatan}}</p>
+        </div>    
+    </div>
+    <div class="row justify-content-center unggah">
+        <a type="button" class="btn btn-adopsi" style="margin-bottom: 10vh;" onclick="location.href='/user/detail-donasi/{{donasi.id}}/melakukan-donasi/'"> Mau Berdonasi </a> 
+        <a type="button" class="btn btn-adopsi" style="margin-bottom: 10vh;" onclick="location.href='/user/detail-donasi/{{donasi.id}}/list-donasi/'">List Donasi</a>
+    </div>
+</div>
+{% endblock content_block %}

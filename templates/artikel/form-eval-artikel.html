@@ -1,0 +1,41 @@
+{% extends 'navbar.html' %}
+{% block content_block %}
+{% load static %}
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="{% static 'css/artikel.css' %}" type="text/CSS">
+</head>
+<a href="{% url 'adminadopet:beranda' %}" class="btn btn-kembali"> < Kembali</a>
+<div class="container">
+	<div class="row justify-content-md-center">
+		<h1 class="head-artikel">Request Artikel</h1>
+	</div>
+</div>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-7">
+            <p class="form-label">Judul Artikel :</p>
+            <p class="jawaban">{{artikel.judul_artikel}}</p>
+            <p class="form-label">Unggahan Foto :</p>
+            <img src="{% static 'images/kucing-1.jpg' %}" alt="">
+            <p class="form-label">Isi Artikel :</p>
+            <p class="jawaban">{{artikel.isi_artikel}} </p>
+            <p class="form-label">Tag Artikel :</p>    
+            <p class="jawaban">{{artikel.tag_artikel}} </p>
+        </div>
+    </div>
+    <div class="row justify-content-center unggah">
+        <form method ="POST" action="{% url 'adminadopet:delete_artikel' artikel.id %}">{% csrf_token %}
+            <div class="col-6">
+                <button type="submit" class="btn btn-listadopsi">Tolak</button>
+            </div>     
+        </form>
+        <form method ="POST" action="{% url 'adminadopet:eval_artikel' artikel.id %}">{% csrf_token %}
+            <div class="col-6">
+                <button type="submit" class="btn btn-listadopsi">Unggah</button>
+            </div>     
+        </form>  
+    </div>
+</div>
+
+{% endblock content_block %}

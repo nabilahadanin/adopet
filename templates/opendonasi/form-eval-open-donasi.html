@@ -1,0 +1,51 @@
+{% extends 'head.html' %}
+{% block content_block %}
+<a href="{% url 'adminadopet:beranda' %}" class="btn btn-kembali"> < Kembali</a>
+<div class="container">
+	<div class="row justify-content-md-center">
+		<p class="judul-form">Request Open Donasi #{{donasi.id}}</p><br>
+	</div>
+</div>
+
+
+{% load static %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-7">
+            <p class="form-label">Nama Hewan :</p>
+            <p class="jawaban">{{donasi.nama_hewan}}</p>
+            <p class="form-label">Jenis Hewan :</p>
+            <p class="jawaban">{{donasi.jenis_hewan}}</p>
+            <p class="form-label">Jenis Kelamin Hewan :</p>
+            <p class="jawaban">{{donasi.jenis_kelamin_hewan}}</p>
+            <p class="form-label">Usia Hewan :</p>
+            <p class="jawaban">{{donasi.usia_hewan}}</p>
+            <p class="form-label">Domisili Hewan :</p>
+            <p class="jawaban">{{donasi.domisili_hewan}}</p>
+            <p class="form-label">Keterangan :</p>
+            <p class="jawaban">{{donasi.keterangan}}</p>
+            <p class="form-label">Kategori :</p>
+            <p class="jawaban">{{donasi.kategori}}</p>
+            <p class="form-label">Kondisi Kesehatan Secara Detail :</p>
+            <p class="jawaban">{{donasi.kondisi_kesehatan}}</p>
+            <p class="form-label">Lokasi Perawatan/Pengobatan :</p>
+            <p class="jawaban">{{donasi.lokasi_perawatan}}</p>
+            <p class="form-label">Biaya Perawatan/Pengobatan :</p>
+            <p class="jawaban">{{donasi.biaya_perawatan}}</p>  
+        </div>
+    </div>
+    <div class="row justify-content-around unggah">
+        <form method ="POST" action="{% url 'adminadopet:delete_open_donasi' donasi.id %}">{% csrf_token %}
+            <div class="col-6">
+                <button type="submit" class="btn btn-eval Delete">Tolak</button>
+            </div>     
+        </form>
+        <form method ="POST" action="{% url 'adminadopet:eval_open_donasi' donasi.id %}">{% csrf_token %}
+            <div class="col-6">
+                <button type="submit" class="btn btn-eval Unggah">Unggah</button>
+            </div>     
+        </form>  
+    </div>
+</div>
+
+{% endblock content_block %}

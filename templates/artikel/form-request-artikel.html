@@ -1,0 +1,56 @@
+{% extends 'head.html' %}
+{% block content_block %}
+{% load static %}
+<head>
+	<link rel="stylesheet" href="{% static 'css/artikel.css' %}" type="text/CSS">
+</head>
+<a href="{% url 'user:beranda' %}" class="btn btn-kembali"> < Kembali</a>
+<div class="container">
+	<div class="row justify-content-md-center">
+		<h1 class="head-artikel">Form Request Artikel</h1>
+	</div>
+</div>
+<div class="container">
+	<form method="POST"> {% csrf_token %}
+		<div class="form-group">
+			<div class="form-group1">
+				<label for="judul_artikel">Judul Artikel :</label><br>
+				<textarea class="form-control" name="judul_artikel" cols="10" rows="1" placeholder="Tulis Judul Disini" required></textarea>
+			</div>
+			<div class="form-group2">
+				<label for="isi_artikel">Isi Artikel :</label>
+				<textarea class="form-control" name="isi_artikel" cols="50" rows="6" placeholder="Tulis Artikelmu Disini" required></textarea>
+			</div>
+			<div class="form-group3">
+				<label for="img_artikel">Foto Artikel :</label>
+				<input type="file" class="form-control-file" name="img_artikel" accept="image/*">
+			</div>
+			<br>
+			<label for="tag-artikel">Tag Artikel :</label>
+			<div class="form-control">
+				<div class = "row">
+					<div class="col">
+						<input type="checkbox" id="tag-anjing" name="tag_artikel" value="Anjing">
+						<label for="tag-anjing"> anjing</label><br>
+					</div>
+					<div class="col">
+						<input type="checkbox" id="tag-kucing" name="tag_artikel" value="Kucing">
+						<label for="tag-kucing"> kucing</label><br>
+					</div>
+					<div class="col">
+						<input type="checkbox" id="tag-artikel" name="tag_artikel" value="Artikel">
+						<label for="tag-artikel"> artikel</label><br>
+					</div>
+					<div class="col">
+						<input type="checkbox" id="tag-makanan" name="tag_artikel" value="Makanan">
+						<label for="tag-makanan"> makanan</label><br>
+					</div>
+				</div>
+			</div>
+			<div class="row justify-content-center unggah">
+				<button type="submit" class="btn btn-secondary">Request</button>
+			</div>
+		</div>
+	</form>
+</div>
+{% endblock content_block %}

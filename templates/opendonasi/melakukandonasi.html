@@ -1,0 +1,54 @@
+{% extends 'navbar.html' %}
+{% block content_block %}
+<a type="button" onclick="location.href='/user/detail-donasi/{{donasi.id}}/'" class="btn btn-kembali"> < Kembali</a>
+<div class="container">
+	<div class="row justify-content-md-center">
+		<p class="judul-form">Yuk Donasi!</p><br>
+	</div>
+</div>
+
+<div class="container">
+    <form method="POST" >
+        {% csrf_token %}
+        <div class="row justify-content-center">
+            <div class="col-7">
+                <p class="form-label">Masukan Nominal Donasi</p>
+                <input type="number" class="form-control" name = "nominal_donasi" placeholder="minimal Rp5000">
+                <p class="form-label">Pilih Metode Pembayaran</p>
+                <div>
+                    <select id="metode" name="metode_donasi" class="form-control">
+                    <option value="gopay">GO-PAY</option>
+                    <option value="jenius">Jenius</option>
+                    <option value="linkaja">LinkAja</option>
+                    <option value="ovo">OVO</option>
+                    <option value="bca">BCA</option>
+                    <option value="bni">BNI</option>
+                    <option value="bri">BRI</option>
+                    <option value="mandiri">Mandiri</option>
+                    <option value="visa">Visa</option>
+                    </select>
+                </div>  
+                <p class="form-label">Nama Lengkap</p>
+                <input type="text" class="form-control" name="nama_pendonasi">
+                <p class="form-label">Nomor Ponsel atau Email</p>
+                <input type="text" class="form-control" name="hp_email">
+                <p class="form-label">Sembunyikan nama saya (donasi anonim)</p>
+                <label class="switch">
+                    <input type="checkbox" name="anonim_donasi" placeholder="anonim_donasi" id="anonim_donasi" aria-label="anonim_donasi">
+                    <span class="slider"></span>
+                </label>
+                <p class="form-label">Tulis doa dan dukungan (opsional)</p>
+                <textarea rows="10" cols="30" class="form-control" placeholder="Beri doa, dan dukunganmu disini" name="dukungan" style="resize: none;"></textarea>
+            </div>
+        </div>
+        <div class="row justify-content-center unggah">
+            <div class="col-6">
+                <button type="submit" class="btn btn-secondary" href='detail-donasi/{{donasi.id}}/list-donasi/'>Donasikan</button>
+            </div>        
+        </div>
+    </form>
+    <br><br>
+
+</div>
+
+{% endblock content_block %}

@@ -1,0 +1,19 @@
+# Served static
+staticfiles/
+
+# Python cache
+*/__pycache__/*
+
+# Environment variables
+env/
+
+#ignore chromedriver
+chromedriver
+chromedriver.exe
+
+# Python compiled files
+.pyc
+
+# Coverage
+.coverage
+

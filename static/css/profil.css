@@ -1,0 +1,65 @@
+* {
+  box-sizing: border-box;
+}
+
+#img-profil {
+    border-radius: 25px;
+    border: 1px solid #000000;
+    display: block;
+}
+
+.column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  height: 300px; 
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.judul-profil{
+    font-style: normal;
+    font-weight: bold;
+    font-size: 35px;
+    color: #f7444e;
+    text-align: center;
+    margin-top: 2%;
+}
+
+#info-user{
+    border: 2px solid #002c3e;
+    border-radius: 15px; 
+    padding: 5px;
+}
+
+#text-profil{
+    display: block;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.list-testimoni{
+    border: 2px solid #002c3e;
+    border-radius: 15px; 
+    padding: 10px;
+    margin-top: 5%;
+}
+
+.btn-primary{
+    width: 45% !important;
+    background-color: #002c3e !important;
+    color: #F7F8F3 !important;
+}
+
+.form-testimoni{
+    font-style: normal;
+    font-weight: bold;
+    font-size: 40px;
+    color: #f7444e;
+    margin-top: 2%;
+    text-align: center;
+}

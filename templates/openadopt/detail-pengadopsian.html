@@ -1,0 +1,37 @@
+{% extends 'navbar.html' %}
+{% block content_block %}
+{% load static %}
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="{% static 'css/openadopt.css' %}" type="text/CSS">
+</head>
+<a type="button" onclick="location.href='/user/detail-open-adopt/{{hewan.id}}/'" class="btn btn-kembali"> < Kembali</a>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="post-adopsi">
+            <p class="judul-post-adopsi">List Request Pengadopsian</p>
+            {% for i in pengadopsian %}
+            {% if i.id_hewan|stringformat:"s" == hewan.id|stringformat:"s" %}
+            <div style="border: 1px solid #002c3e; padding: 20px; margin-top: 20px;">
+                <div class="col" style="margin-top: 3vh;">
+                    <p>Nama Lengkap : {{i.nama_pengadopsi}}</p>
+                    <p>Nomor HP : {{i.nomor_hp}}</p>
+                    <p>Alamat Email : {{i.email_pengadopsi}}</p>
+                    <p>Alamat Lengkap : {{i.alamat_pengadopsi}}</p>
+                </div>
+                <div class="row justify-content-center unggah">
+                    <form method ="POST" action="{% url 'user:delete_request_adopsi' hewan.id i.id %}">{% csrf_token %}
+                        <button type="submit" class="btn btn-listadopsi">Tolak</button>   
+                    </form>
+                    <form method ="POST" action="{% url 'user:berhasil_adopsi' hewan.id i.id %}">{% csrf_token %}
+                        <button type="submit" class="btn btn-listadopsi">Unggah</button>
+                    </form>  
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+	</div>
+</div>
+<br><br>
+{% endblock content_block %}

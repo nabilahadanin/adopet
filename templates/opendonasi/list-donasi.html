@@ -1,0 +1,42 @@
+{% extends 'navbar.html' %}
+{% block content_block %}
+{% load static %}
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="{% static 'css/openadopt.css' %}" type="text/CSS">
+</head>
+<a type="button" onclick="location.href='/user/detail-donasi/{{donasi.id}}/'" class="btn btn-kembali"> < Kembali</a>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="list-donasi">
+            <h2 class="judul-post-adopsi" style="padding-bottom: 3vh;">List Pendonasian</h2>
+            {% for i in pendonasian %}
+            {% if i.id_donasi|stringformat:"s" == donasi.id|stringformat:"s" %}
+            <div style="border: 1px solid #002c3e; padding: 20px; margin-top: 20px;">
+                <div>
+                    <p>Nama Lengkap : {{i.nama_pendonasi}} </p>
+                    <p>Nomor HP / Email : {{i.hp_email}} </p>
+                    <p>Nominal Donasi : {{i.nominal_donasi}} </p>
+                    <p>Metode Donasi : {{i.metode_donasi}} </p>
+                    <p>Pesan : {{i.dukungan}} </p>
+                </div>
+                <div class="row justify-content-center unggah">
+                    <form method ="POST" action="{% url 'user:delete_pendonasian' donasi.id i.id %}">{% csrf_token %}
+                        <div class="col-6">
+                            <button type="submit" class="btn btn-listadopsi">Tolak</button>
+                        </div>     
+                    </form>
+                    <form method ="POST" action="{% url 'user:berhasil_donasi' donasi.id i.id %}">{% csrf_token %}
+                        <div class="col-6">
+                            <button type="submit" class="btn btn-listadopsi">Konfimrasi</button>
+                        </div>     
+                    </form>  
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+	</div>
+</div>
+<br><br>
+{% endblock content_block %}

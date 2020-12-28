@@ -1,0 +1,98 @@
+{% extends 'navbar.html' %}
+{% block content_block %}
+{% load static %}
+<head>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="{% static 'css/openadopt.css' %}" type="text/CSS">
+</head>
+<a href="{% url 'user:beranda' %}" class="btn btn-kembali"> < Kembali</a>
+<div class="container">
+	<div class="row justify-content-md-center">
+		<p class="judul-post-adopsi">Pengadopsian Hewan</p><br>
+	</div>
+</div>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-7">
+            <p class="form-label">Nama Hewan :</p>
+            <p class="jawaban">{{hewan.nama_hewan}}</p>
+            <p class="form-label">Jenis Hewan :</p>
+            <p class="jawaban">{{hewan.jenis_hewan}}</p>
+            <p class="form-label">Jenis Kelamin Hewan :</p>
+            <p class="jawaban">{{hewan.jenis_kelamin_hewan}}</p>
+            <p class="form-label">Usia Hewan :</p>
+            <p class="jawaban">{{hewan.usia_hewan}}</p>
+            <p class="form-label">Domisili Hewan :</p>
+            <p class="jawaban">{{hewan.domisili_hewan}}</p>
+            <p class="form-label">Keterangan :</p>
+            <p class="jawaban">{{hewan.keterangan}}</p>
+            <p class="form-label">Kategori :</p>
+            <p class="jawaban">{{hewan.kategori}}</p>
+            <p class="form-label">Kondisi Fisik Hewan :</p>
+            <p class="jawaban">{{hewan.kondisi_fisik_hewan}}</p>
+            <p class="form-label">Kondisi Psikis Hewan :</p>
+            <p class="jawaban">{{hewan.kondisi_psikis_hewan}}</p>
+            <p class="form-label">Mahar Adopsi :</p>
+            <p class="jawaban">{{hewan.mahar_adopsi}}</p>
+        </div>
+    </div>
+
+    <div class="row justify-content-center unggah">      
+        <div class="col">
+            <a type="button" class="btn btn-adopsi" onclick="location.href='/user/detail-open-adopt/{{hewan.id}}/form-pengadopsian/'">Adopsi Hewan</a>  
+            <a type="button" class="btn btn-adopsi" onclick="location.href='/user/detail-open-adopt/{{hewan.id}}/detail-pengadopsian/'">List Adopsi</a>
+        </div>        
+    </div>
+</div>
+<br><br>
+<hr class="line">
+<div class="container forum">
+    <div>
+        <div class="row justify-content-md-center">
+            <h1 class="judul-form">Forum Q&A</h1><br>
+        </div>
+    </div>
+
+    <div>
+        <div class="list-forum">
+        {% if forum %}
+            {% for i in forum %}
+            {% if i.id_adopt|stringformat:"s" == hewan.id|stringformat:"s" %}
+            <div class="row justify-content-center">
+                <div class="col-md-7">
+                    <div class="w3-card-4" style="width:70%">
+                        <header class="w3-container w3-light-grey">
+                            <h3>{{i.judul_forum}}</h3>
+                        </header>
+                        <div class="w3-container">
+                            <hr>
+                            <p>{{i.isi_forum}}</p><br>
+                        </div>
+                        <div class="w3 container">
+                            {% for j in replyforum %}
+                            {% if j.id_forum|stringformat:"s" == i.id|stringformat:"s" %}
+                            <p>{{j.reply_forum}}</p>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                        <a type="button" class="w3-button w3-block w3-dark-grey" onclick="location.href='/user/detail-open-adopt/{{hewan.id}}/forum/{{i.id}}/reply/'">Reply Forum</a>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+        {% else %}
+		<div class="container my-5 text-center">
+			Sorry, there are no current posts.<br><strong>Check back soon!</strong>
+		</div>
+        {% endif %}
+        </div>
+    </div>
+</div>
+<div>
+    <div class="row justify-content-center unggah">
+        <a type= "button" class ="btn btn-adopsi" style="margin-bottom: 10vh;" onclick="location.href='/user/detail-open-adopt/{{hewan.id}}/buat-forum/'">Buat Forum</a>
+    </div>
+</div>
+{% endblock content_block %}

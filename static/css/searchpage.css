@@ -1,0 +1,51 @@
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 100%;
+    text-align: center;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+  
+.container {
+    padding: 2px 16px;
+    max-width: 100px;
+}
+
+.btn {
+    color: white;
+    background: #78BCC4;
+    border-color: #78BCC4;
+}
+
+.btn:hover {
+    color: white;
+    background: #0E82B2;
+    border-color: #0E82B2;
+}
+
+.btn:active {
+    color: white;
+    background: #255b70;
+    border-color: #255b70;
+}
+
+.filter-btn {
+    color: white;
+    background: #78BCC4;
+    border-color: #78BCC4;
+}
+
+.filter-btn:hover {
+    color: white;
+    background: #0E82B2;
+    border-color: #0E82B2;
+}
+
+.filter-btn:active {
+    color: white;
+    background: #255b70;
+    border-color: #255b70;
+}

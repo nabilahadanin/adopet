@@ -1,0 +1,40 @@
+{% extends 'navbar.html' %}
+{% block content_block %}
+{% load static %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/profil.css' %}" type="text/CSS">
+</head>
+<div class="container">
+    <p class="judul-profil">Nabilah Adani Nurulizzah</p><br>
+    <div class="row justify-content-center">
+        <div class="col-7">
+            <div class="row" id="info-user">
+                <div class="column">
+                    <img id="img-profil" src="{% static 'images/kucing-1.jpg' %}" alt="" width="250px" height="250px">
+                </div>
+                <div class="column" id="text-profil">
+                    <p>First Name : Nabilah Adani</p>
+                    <p>Last Name : Nurulizzah</p>
+                    <p>Domisili : Depok</p>
+                    <a class="btn btn-primary" href="/user/profil/buat-testimoni/" role="button">Buat Testimoni</a>
+                    <a class="btn btn-primary" href="/user/chatpage/" role="button">Chat</a>
+                </div>
+            </div>
+            <div class="list-testimoni">
+                <h2>List Testimoni</h2>
+                {% if testimoni %}
+                {% for i in testimoni %}
+                <dl>
+                    <dd>Dari user : {{i.nama_user}}</dd>
+                    <dd>Nilai : {{i.nilai_user}}</dd>
+                    <dd>{{i.komentar_user}}</dd>
+                </dl>
+                <hr style="border: 1px solid #002c3e;">
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content_block %}

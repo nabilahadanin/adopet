@@ -1,0 +1,38 @@
+{% extends 'navbar.html' %}
+{% block content_block %}
+{% load static %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/profil.css' %}" type="text/CSS">
+</head>
+<a href="/user/profil/" class="btn btn-kembali"> < Kembali</a>
+<div class="container">
+	<p class="form-testimoni">Form Testimoni</p>
+	<form method="POST"> {% csrf_token %}
+		<p class="form-label">Nama Lengkap</p>
+		<input type="text" class="form-control" name="nama_user" required>
+		<div class="form-group">
+			<p class="form-label">Beri Nilai User</p>
+            <div>
+                <select name="nilai_user" class="form-control">
+                  <option value="0">0</option>
+                  <option value="4">4</option>
+                  <option value="3">3</option>
+                  <option value="2">2</option>
+                  <option value="1">1</option>
+                </select>
+            </div> 
+		</div>
+		<div class="form-group">
+			<label for="isi-artikel">Komentar untuk Adoptee:</label>
+			<textarea class="form-control" name="komentar_user" cols="50" rows="6"></textarea>
+		</div>
+		<div class="form-group">
+			<label for="img">Input Foto :</label>
+			<input class="img" type="file" id="formFileMultiple" accept="image/*" multiple> 
+		</div>
+		<div class="row justify-content-center unggah">
+			<button type="submit" class="btn btn-secondary">Unggah</button>
+		</div>
+	</form>
+</div>
+{% endblock content_block %}

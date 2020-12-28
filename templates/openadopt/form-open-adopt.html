@@ -1,0 +1,69 @@
+{% extends 'head.html' %}
+
+{% block content_block %}
+<a href="{% url 'user:beranda' %}" class="btn btn-kembali"> < Kembali</a>
+<div class="container">
+	<div class="row justify-content-md-center">
+		<p class="judul-form">Form Open Adopt</p><br>
+	</div>
+</div>
+<form method="POST"> {% csrf_token %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-7">
+            <label for="id_nama_hewan" class="form-label">Nama Hewan<span class="star">*</span> </label>
+            <input type="text" id="id_nama_hewan" class="form-control" name="nama_hewan" required="">
+            
+            <label for="id_jenis_hewan" class="form-label">Jenis Hewan<span class="star">*</span> </label>
+            <input type="text" id="id_jenis_hewan" class="form-control" name="jenis_hewan" required="">   
+            
+            <div class="form-group">
+                <label for="id_jenis_kelamin_hewan" class="form-label">Jenis Kelamin Hewan<span class="star">*</span> </label>
+                <select class="form-control" name="jenis_kelamin_hewan" required="" id="id_jenis_kelamin_hewan">
+                    <option value="" selected="">Pilih Jenis Kelamin</option>
+                    <option value="Jantan">Jantan</option>
+                    <option value="Betina">Betina</option>
+                </select>
+            </div>
+
+            <label for="id_usia_hewan" class="form-label">Usia Hewan<span class="star">*</span> </label>
+            <input type="text" id="id_usia_hewan" class="form-control" name="usia_hewan" required="">   
+            
+            <label for="id_domisili_hewan" class="form-label">Domisili Hewan<span class="star">*</span> </label>
+            <input type="text" id="id_domisili_hewan" class="form-control" name="domisili_hewan" required="">   
+            
+            <label for="id_keterangan" class="form-label">Keterangan</label>
+            <input type="text" id="id_keterangan" class="form-control form-big" name="keterangan">   
+            
+            <div class="form-group">
+                <label for="id_kategori" class="form-label">Kategori<span class="star">*</span> </label>
+                <select class="form-control" name="kategori" required="" id="id_kategori">
+                    <option value="" selected="">Pilih Kategori</option>
+                    <option value="Kucing">Kucing</option>
+                    <option value="Anjing">Anjing</option>
+                    <option value="Kelinci">Kelinci</option>
+                    <option value="Burung">Burung</option>
+                    <option value="Ikan">Ikan</option>
+                    <option value="Pengerat">Hewan Pengerat</option>
+                    <option value="Unggas">Unggas</option>
+                    <option value="Reptil">Reptil</option>
+                    <option value="Lainnya">Lainnya</option>
+                </select>
+            </div>
+            
+            <label for="id_kondisi_fisik_hewan" class="form-label">Kondisi Fisik Hewan<span class="star">*</span> </label>
+            <input type="text" id="id_kondisi_fisik_hewan" class="form-control form-big" name="kondisi_fisik_hewan" required="">  
+            
+            <label for="id_kondisi_psikis_hewan" class="form-label">Kondisi Psikis Hewan<span class="star">*</span> </label>
+            <input type="text" id="id_kondisi_psikis_hewan" class="form-control form-big" name="kondisi_psikis_hewan" required="">  
+            
+            <label for="id_mahar_adopsi" class="form-label">Mahar Adopsi</label>
+            <input type="text" id="id_mahar_adopsi" class="form-control" name="mahar_adopsi">  
+        </div>
+    </div>
+    <div class="row justify-content-center unggah">
+        <button type="submit" class="btn btn-secondary" style="margin-top: 15vh; margin-bottom: 10vh;">Unggah</button>
+    </div>
+</div>
+</form>
+{% endblock content_block %}
