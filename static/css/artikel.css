@@ -16,13 +16,6 @@
     padding: 15px;
 }
 
-img{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
-}
-
 .unggah-button{
     margin-top: 5%;
 }
@@ -46,4 +39,9 @@ img{
 .nama-penulis{
     font-size: 20px;
     font-style: italic;
+}
+
+.tag-artikel{
+    font-weight: bold;
+    font-size: 18px;
 }

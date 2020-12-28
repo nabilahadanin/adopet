@@ -2,6 +2,7 @@
 {% block content_block %}
 {% load static %}
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="{% static 'css/artikel.css' %}" type="text/CSS">
 </head>
 <a href="{% url 'adminadopet:beranda' %}" class="btn btn-kembali"> < Kembali</a>
@@ -26,12 +27,12 @@
     <div class="row justify-content-center unggah">
         <form method ="POST" action="{% url 'adminadopet:delete_artikel' artikel.id %}">{% csrf_token %}
             <div class="col-6">
-                <button type="submit" class="Delete">Tolak</button>
+                <button type="submit" class="btn btn-listadopsi">Tolak</button>
             </div>     
         </form>
         <form method ="POST" action="{% url 'adminadopet:eval_artikel' artikel.id %}">{% csrf_token %}
             <div class="col-6">
-                <button type="submit" class="Unggah">Unggah</button>
+                <button type="submit" class="btn btn-listadopsi">Unggah</button>
             </div>     
         </form>  
     </div>
