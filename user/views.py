@@ -278,7 +278,7 @@ def buat_testimoni(request):
         data = Testimoni(nama_user = response['nama_user'], nilai_user = response['nilai_user'], komentar_user = response['komentar_user'])
         data.save()
         form = FormAdopt()
-        return render(request, 'warning/berhasil-unggah.html', {'database': database})
+        return render(request, 'warning/berhasil-kirim-testimoni.html')
     if request.method == 'DELETE':
         if 'DeleteAll' in request.DELETE:
             Testimoni.objects.all().delete()
@@ -328,7 +328,7 @@ def reply_forum(request, id_hewan, id_forum):
         data = ReplyForum(id_forum = response['id_forum'], reply_forum = response['reply_forum'])
         data.save()
         form = FormReply()
-        return render(request, 'warning/berhasil-kirim.html')
+        return render(request, 'warning/berhasil-kirim-reply.html', {'hewan' : hewan})
     else:
         form = FormReply()
         context = {
@@ -337,8 +337,6 @@ def reply_forum(request, id_hewan, id_forum):
             'hewan' : hewan,
         }
         return render(request, 'openadopt/reply-forum.html', context)
-
-
 
 def chatpage(request):
     return render(request, 'chatting/chatpage.html')

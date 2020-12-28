@@ -24,10 +24,11 @@
                 {% if testimoni %}
                 {% for i in testimoni %}
                 <dl>
-                    <dt>{{i.nama_user}}</dt>
+                    <dd>Dari user : {{i.nama_user}}</dd>
                     <dd>Nilai : {{i.nilai_user}}</dd>
                     <dd>{{i.komentar_user}}</dd>
                 </dl>
+                <hr style="border: 1px solid #002c3e;">
                 {% endfor %}
                 {% endif %}
             </div>

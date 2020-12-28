@@ -15,16 +15,17 @@ develop : [![pipeline status](https://gitlab.com/m.yoga.mahendra/adopet/badges/d
 #### Pengerjaan Fitur : 
 
 ##### Steven : 
-Melakukan Donasi 
+- Melakukan Donasi 
+- Forum
 ##### Yoga : 
-Search 
-Chat 
+- Search 
+- Chat 
 ##### Nabilah : 
-Artikel 
-Testimoni 
-Pengadopsian Hewan 
+- Artikel 
+- Testimoni 
+- Pengadopsian Hewan 
 ##### Zafira : 
-Open Adopt 
-Open Donasi 
+- Open Adopt 
+- Open Donasi 
 
 #### Link Heroku App : https://ado-pet.herokuapp.com/

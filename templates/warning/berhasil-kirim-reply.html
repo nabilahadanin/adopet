@@ -1,0 +1,13 @@
+{% extends 'navbar.html' %}
+{% block content_block %}
+
+<div class="container">
+    <div class="row justify-content-center login-admin">
+        <p class="berhasil">Berhasil Mengirim Reply</p>
+    </div>
+    <div class="row justify-content-center login">
+        <a type="button" class="btn btn-beranda" onclick="location.href='/user/detail-open-adopt/{{hewan.id}}/'">Kembali ke Post</a>
+    </div>
+</div>
+
+{% endblock content_block %}
